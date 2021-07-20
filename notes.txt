@@ -1,0 +1,15 @@
+Local Testing of Site
+
+bundle exec jekyll serve
+
+
+Pushing the Site
+ensure anything unwanted is added to the .gitignore
+git add .
+git commit -m "your message"
+git push -u origin main
+
+
+Setting up the remote origin
+git remote add origin https://github.com/USER/REPOSITORY.git
+or opt for the ssh key
