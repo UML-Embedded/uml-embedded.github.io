@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+{%- if page.detail_image -%}<img class="home_header" src="{{ page.detail_image }}">{%- endif -%}
+
+<center>
+    <hr>
+    <img src="/assets/images/asci/projects_asci.png">
+    <hr>
+</center>
+
+
+{% for post in site.posts %}
+  {% if post.category == "projects" and post.category != "" %}
+    <center>
+    <br>
+    <font size=6> {{post.title}} </font> <br>
+    <br>
+    <a href="{{ post.permalink }}">
+    <img src="{{ post.detail_image }}" style="width:350px;height:350px">
+    <br>
+    {{ post.description }}
+    </a>
+    <br>
+    <br>
+    <br>
+    </center>
+  {% endif %}
+{% endfor %}
+
+
+{{ content }}

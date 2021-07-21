@@ -1,0 +1,8 @@
+<footer>
+
+  {{ site.title }}/{{ page.permalink_name | replace: "/", "" | replace: " ", "-" }}
+  <br><br>
+  {% if site.github_username and site.github_username != "" %} :octocat: <a href="https://github.com/{{site.github_username}}">@{{ site.github_username }}</a> {% endif %}
+  {% if site.youtube_username and site.youtube_username != "" %} :movie_camera: <a href="https://www.youtube.com/channel/UC6PF4hNLxFtxfc0eDMCGuiQ">@{{ site.youtube_username }}</a> {% endif %}
+
+</footer>

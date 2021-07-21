@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>
+    Altium Layout Tutorial - 
+  </title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="text/javascript" src=""></script>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Altium Layout Tutorial</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Altium Layout Tutorial" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This guide is a basic overview of how to layout a board in Altium, primarily created for Umass Lowell’s Embedded Club but it’s useful for anyone trying to learn Altium" />
+<meta property="og:description" content="This guide is a basic overview of how to layout a board in Altium, primarily created for Umass Lowell’s Embedded Club but it’s useful for anyone trying to learn Altium" />
+<link rel="canonical" href="http://localhost:4000/tutorials/altium_layout_tutorial.html" />
+<meta property="og:url" content="http://localhost:4000/tutorials/altium_layout_tutorial.html" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-28T02:41:46-05:00" />
+<script type="application/ld+json">
+{"headline":"Altium Layout Tutorial","dateModified":"2021-02-28T02:41:46-05:00","datePublished":"2021-02-28T02:41:46-05:00","url":"http://localhost:4000/tutorials/altium_layout_tutorial.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tutorials/altium_layout_tutorial.html"},"description":"This guide is a basic overview of how to layout a board in Altium, primarily created for Umass Lowell’s Embedded Club but it’s useful for anyone trying to learn Altium","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+
+  <body class="small">
+
+    <header>
+  <div class="menu">
+    <ul>
+      <li class="page_title">Altium Layout Tutorial</li>
+<li><a href="/">/Home</a></li>
+<li><a href="/tutorial">/Tutorials</a></li>
+<li><a href="/projects">/Projects</a></li>
+<li><a href="/blog">/Blog</a></li>
+<li><a href="/about">/About</a></li>
+</ul>
+  </div>
+</header>
+
+
+    <img class="detail_header" src="/assets/images/altium_logo.png"><center>
+<h1>Altium Layout Tutorial</h1>
+</center>
+
+<hr>
+<h2 id="creating-the-board">Creating the board</h2>
+<hr>
+<p><strong>ProjectName.PrjPcb » Right Click » Add New to Project » PCB<br>
+PCB1.PcbDoc » Right Click » Rename(as desired)</strong></p>
+
+<hr>
+<h2 id="configuring-the-board">Configuring the Board</h2>
+<hr>
+<h3 id="set-the-origin">Set the Origin</h3>
+<p><strong>Edit » Origin » Set</strong></p>
+
+<h3 id="set-units">Set Units</h3>
+<p><strong>View » Toggle Units	(Hotkey: Q)</strong></p>
+
+<h3 id="set-snapgrid">Set Snapgrid</h3>
+<p><strong>Hotkey: G<br>
+Hotkey: Ctrl+Shift+G</strong><br>
+(Opens snapgrid settings rather than swap between predefined snapgrids)</p>
+
+<hr>
+<h2 id="edit-the-board-shape">Edit the Board Shape</h2>
+<hr>
+<p><strong>Ctrl+PgDown: Zoom Fit<br>
+View » Board Planning Mode	(Hotkey: 1)<br>
+Design » Edit Board Shape</strong><br>
+Adjust Board corners until desired board shape is achieved</p>
+
+<p>You can also redraw with<br>
+<strong>Design » Redefine Board Shape</strong><br>
+Draw the polygon fill to create board</p>
+
+<hr>
+<h2 id="transfer-the-design">Transfer the Design</h2>
+<hr>
+<h3 id="from-schematic">from schematic</h3>
+<p><strong>Design » Update PCB Document Name.PcbDoc</strong></p>
+
+<h3 id="from-pcb">from PCB</h3>
+<p>Design » Import Changes from Name.PrjPcb<br>
+<strong>Validate Changes<br>
+Execute Changes</strong></p>
+
+<p>If you’re missing any footprints you’ll get an error when you try to import</p>
+
+<hr>
+<h2 id="setup-layer-view">Setup Layer View</h2>
+<hr>
+<p>Panels » View Configuration (Hotkey: L)</p>
+
+<hr>
+<h2 id="setting-up-the-stackup">Setting Up the Stackup</h2>
+<hr>
+<p><strong>Design » Layer Stack Manager (Make sure to save!)<br>
+Panels » Properties<br>
+Properties » Enable Stack Symmetry</strong></p>
+
+<p>Set up Planes and Signal layers (Standard is 1 oz. copper, if it’s a high power board 2 oz. may be neccassary but for hobby projects realize 2 oz. is expensive!)</p>
+
+<p><strong>Via Types » Ensure through hole via is present(If you need partial/embedded vias you’ll be able to figure it out here on your own)</strong></p>
+
+<p>Remember to save the stackup!</p>
+
+<h2 id="before-you-place-set-up-your-snap-grid">Before you Place Set Up Your Snap Grid!</h2>
+
+<hr>
+<h2 id="basic-electrical-rule-configuration">Basic Electrical Rule Configuration</h2>
+<hr>
+<p>Here’s some basics to get you started, ICs tend to have metric based packages so probably best to use mm here.</p>
+<ul>
+  <li>
+<strong>Route Width:</strong> 0.25 mm	Where: Routing Grid Design Rule (Can also do whatever 50 ohm impedance is for your dielectric/stackup)</li>
+  <li>
+<strong>Clearance:</strong> 0.25 mm		Where: Electrical Clearance Design Rule	(High speed signals need special care!)</li>
+  <li>
+<strong>Board Definition Grid:</strong> 5 mm		Where: Cartesian Grid Editor</li>
+  <li>
+<strong>Component Placement Grid:</strong> 1 mm	Where: Cartesian Grid Editor</li>
+  <li>
+<strong>Routing Grid:</strong> 1 mm		Where: Cartesian Grid editor</li>
+  <li>
+<strong>Via size:</strong> 1 mm			Where: Routing Via style design rule	(High current traces may need larger/multiple vias)</li>
+  <li>
+<strong>Via hole:</strong> 0.6 mm		Where: Routing Via Style Design Rule</li>
+</ul>
+
+<p>Altium Support Polar Grids if you’re doing a curved board but I’m not going into that</p>
+
+<p>Cartesian Grid Editor (Hotkey:Ctrl+G)
+Set the grid definition here as well so you can see it well</p>
+
+<hr>
+<h2 id="pcb-rules">PCB Rules</h2>
+<hr>
+<p><strong>Design » Rules</strong><br>
+Set up everything according to what your manufacturer supports. Some manufactures will provide an altium rule file to import, and if they do love them eternally because so much less busy work</p>
+
+<hr>
+<h2 id="basic-setup">Basic setup</h2>
+<hr>
+<ul>
+  <li>
+<strong>clearance:</strong> 0.25mm for all</li>
+  <li>
+<strong>signal:</strong> 0.25mm standard</li>
+  <li>
+<strong>power:</strong> thick traces, minimum can still be low for small offshoots to pins, etc</li>
+  <li>
+<strong>routing vias:</strong> 1mm diameter, 0.6mm hole size</li>
+</ul>
+
+<p>Yes, you can be more specific, and if the boards high density please do look in depth at your manufacturers capabilities. If it’s a hobby project, who cares :)</p>
+
+<hr>
+<h2 id="placement">Placement</h2>
+<hr>
+<p>My first boss taught me that 90% of the battle is placement, and I recommend you take his advice.</p>
+
+<ul>
+  <li>Spend time making the rat’s nest of traces as short as possible. Rotate parts around, make sure there is as short of a distance as possible for you to route wires.</li>
+  <li>Place Connectors and any mechanical requirements First, then place components as fits.</li>
+  <li>Make sure you place the bypass caps as close as physically possible to the VCC and GND pins of your components!</li>
+  <li>If you need to use vias use them, there’s different theories on what’s best here. Some people prefer routing all on the top layer, some believe hiding the signals in your stack up is more beneficial.</li>
+</ul>
+
+<p>I’ll point you to Henry Ott (hottconsultants.com) if you want to read up on the different stack ups and routing techniques
+I also hear good things about Howard Johnson, and John Howie(totally different names, not clones or anything) has some stuff on EMC, but it’s a bit harder to find</p>
+
+<hr>
+<h2 id="planes">Planes</h2>
+<hr>
+<p><strong>Place your planes now!</strong></p>
+
+<p>You need to have a small keepout area on the edge of the board to make manufacturers happy</p>
+
+<p><strong>Polygon Pour » Draw » Click Polygon » Properties » Assign Net » Repour</strong><br>
+(If you mess with things be sure to repour, it’ll fix some weird issues)</p>
+
+<p>If you think yourself a genius feel free to attempt to split your ground planes, if your like the rest of us mortals do the best to ensure your board has as solid of a ground plane as possible.</p>
+
+<p>A solid plane rather than a split one is almost always better.</p>
+
+<hr>
+<h2 id="basic-routing">Basic Routing</h2>
+<hr>
+<p><strong>Route Mode (Hotkey: Ctrl+W)</strong></p>
+
+<ul>
+  <li>Connect everything with the shortest trace possible! Highest priority signals get routed first, remember some lines need controlled impedance/differential pair routing</li>
+  <li>Route slow speed traces last</li>
+  <li>Make sure to put vias to prevent any dead copper!</li>
+  <li>There are fancy methods of making high speed transmission lines with vias along fancy traces but that’s application specific</li>
+  <li>In general spread some via stitch out around the board after to help with return paths. The person who taught me taught me to do it pseudo randomly to prevent “resonance of something”. I can’t quite remember everything ¯_(ツ)_/¯ , but he’s a pretty bright guy so I’d assume he was right.</li>
+</ul>
+
+<p>Autorouting is a privilege you earn after you learn when to use it. If you’re starting out you don’t know how to and shouldn’t. It can save time in some cases but I avoid it 95% of the time</p>
+
+<hr>
+<h2 id="boards-done---design-rule-check">Boards Done -&gt; Design Rule Check</h2>
+<hr>
+<p><strong>Tools » Design Rule Check</strong></p>
+
+<p>Fix or approve any errors</p>
+
+<hr>
+<h2 id="check-your-board-out">Check your board out!</h2>
+<hr>
+<ul>
+  <li>Press 3 to view the board in 3D, make sure everything looks alright</li>
+  <li>Press 2 to go back to routing mode</li>
+</ul>
+
+<hr>
+<h2 id="fabrication-outputsgetting-your-board-made">Fabrication Outputs(Getting your board made!)</h2>
+<hr>
+<p>You can either output individual files from</p>
+
+<p><strong>File » Fabrication Output<br>
+File » Assembly Output</strong></p>
+
+<p>You can also export to other tools such as HyperLynx (super fancy sim software for EMI that you’ll only get to play with if your company has a license) from the file tab.</p>
+
+<p>You can print PDFs from here as well, Altium can output 3D pdf files that allow rotation and zoom in Adobe Acrobat almost as if you were looking at the assembly in Solidworks.</p>
+
+<hr>
+<h2 id="setting-up-output-job-files">Setting Up Output Job Files</h2>
+<hr>
+<p>This will output everything you want, think of it like the CMake of Altium</p>
+
+<p><strong>Right Click Project » Add New to Project » Output Job File</strong></p>
+
+<p>Save file as desired name</p>
+
+<h3 id="basic-set-of-outputs-to-set-up-in-the-outjob-file">Basic set of outputs to set up in the .OutJob file</h3>
+<p><strong>Fabrication » Gerber » PCB Document<br>
+Fabrication » NC Drill Files » PCB Document<br>
+Assembly » Generate pick and place files » PCB Document<br>
+Documentation Output » Schematic Prints » (single page for basic setup)<br>
+Documentation Output » PCB Prints » PCB Document</strong></p>
+
+<h3 id="configuring-the-outputs">Configuring the outputs</h3>
+<p>To Configure each output right click and hit configure<br>
+<strong>Gerber Config</strong>  - (Format, 4:4, Units:mm, layers » plot layers » used on, advanced » position on filme » reference to relative origin)</p>
+
+<h3 id="set-up-the-output-container">Set up the output container</h3>
+<p>Click the folder structure in output containers.</p>
+
+<p>Now check the enable box for every file you want in that folder.<br>
+Set the top file path to manually managed.</p>
+
+<p>I recommend you store everything in a folder call outputs because it looks better.</p>
+
+<p>You may want to go into advanced and enable auto load of gerber and NC drill outputs so you can check to see if they’re accurate after being created</p>
+
+<p>Click the PDF Container and add your PDF’s to it, adjust this output structure as well.
+Name it as you’d like and configure auto open if you want</p>
+
+<p>ODB++ is a new format that contains pick and place info alongside board info. Fancy board houses like it. If you’re getting high quality boards or a large number of boards made
+please just communicate with your board house/assembly house. They’ll tell you what they prefer, and if you give them what they prefer it’ll save you a bit of money hopefully</p>
+
+<p>We’re going to add our BOM to the output as well, but we need to set it up first</p>
+
+<hr>
+<h2 id="active-bom">Active BOM</h2>
+<hr>
+<p><strong>Right Click Project Name » Add new to project » Active Bom<br>
+Properties » Set Production Quantity to see best prices</strong></p>
+
+<p>Now go through each type of component and select the manufacture you want to buy from, Once you select the manufacturer give it a user rank by making a star rating.</p>
+
+<p>Once you do this the status message on the far right side of the BOM should become a green check box for the items that were in stock.<br>
+Add vendors links for any products that still need them by clicking the part and doing add solution.</p>
+
+<p>If you replace a part with a new solution note that whatever option has the most stars will be used if available.<br>
+(ie: if you have 2 different types of amps you can use but the preferred one is usually out of stock set the preffered to 5 stars and option 2 to 4)</p>
+
+<p>If you entered the production amount the tool will help you pick from the different distributors and ensure stocks.</p>
+
+<p>Save the bom and the project!</p>
+
+<p>Now go back to your output job file and add the bom, I recommend you customize it and add either the single supplier or double supplier template.</p>
+
+<p>Add it to your output folder container!</p>
+
+<hr>
+<h2 id="wrap-up">Wrap Up</h2>
+<hr>
+<p>Save everything! You can reuse things like rules setups and your output job file for most cases!</p>
+
+<p>Now go into your output job file and click your output containers.
+Click generate content for each and ensure it’s correct.</p>
+
+<p>Now you have the pdfs of your schematic and board to share with everyone, and your manufacturing files! You’re all set to have it made :)</p>
+
+<hr>
+<h3 id="now-you-have-to-write-the-firmware-youve-been-avoiding-">Now you have to write the firmware you’ve been avoiding :)</h3>
+
+
+
+    <footer>
+
+  /altium_layout_tutorial
+  <br><br>
+   <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20"> <a href="https://github.com/PatrickCPE">@PatrickCPE</a> 
+   <img class="emoji" title=":movie_camera:" alt=":movie_camera:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a5.png" height="20" width="20"> <a href="https://www.youtube.com/channel/UC6PF4hNLxFtxfc0eDMCGuiQ">@PatrickCPE</a> 
+
+</footer>
+
+
+  </body>
+</html>

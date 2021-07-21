@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>
+    Altium Schematic Tutorial - 
+  </title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="text/javascript" src=""></script>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Altium Schematic Tutorial</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Altium Schematic Tutorial" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This guide is a basic overview of how to do draw up schematics in Altium, primarily created for Umass Lowell’s Embedded Club but it’s useful for anyone trying to learn Altium" />
+<meta property="og:description" content="This guide is a basic overview of how to do draw up schematics in Altium, primarily created for Umass Lowell’s Embedded Club but it’s useful for anyone trying to learn Altium" />
+<link rel="canonical" href="http://localhost:4000/tutorials/altium_schematic_tutorial.html" />
+<meta property="og:url" content="http://localhost:4000/tutorials/altium_schematic_tutorial.html" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-28T01:41:46-05:00" />
+<script type="application/ld+json">
+{"headline":"Altium Schematic Tutorial","dateModified":"2021-02-28T01:41:46-05:00","datePublished":"2021-02-28T01:41:46-05:00","url":"http://localhost:4000/tutorials/altium_schematic_tutorial.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tutorials/altium_schematic_tutorial.html"},"description":"This guide is a basic overview of how to do draw up schematics in Altium, primarily created for Umass Lowell’s Embedded Club but it’s useful for anyone trying to learn Altium","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+
+  <body class="small">
+
+    <header>
+  <div class="menu">
+    <ul>
+      <li class="page_title">Altium Schematic Tutorial</li>
+<li><a href="/">/Home</a></li>
+<li><a href="/tutorial">/Tutorials</a></li>
+<li><a href="/projects">/Projects</a></li>
+<li><a href="/blog">/Blog</a></li>
+<li><a href="/about">/About</a></li>
+</ul>
+  </div>
+</header>
+
+
+    <img class="detail_header" src="/assets/images/altium_logo.png"><center>
+<h1>Altium Schematic Tutorial</h1>
+</center>
+
+<hr>
+<p>I lost my old hard drive that had my Altium workflow guide and hotkeys guide on it. I figured I’ll write up this guide for
+anyone who’s interested in learning/switching to Altium. I suppose this will save me a lot of questions when I get around 
+to starting the embedded club in person. If you have any questions or suggestions to add to this guide reach out!</p>
+
+<p>Note: Thou is the same as Mill for anyone who doesn’t know, 1/1000 of an inch!</p>
+
+<h1 id="altium-schematic-design-guide">Altium Schematic Design Guide</h1>
+
+<hr>
+<h3 id="creating-the-project">Creating the project</h3>
+<hr>
+<p><strong>File » New » Project</strong></p>
+
+<p>Default PCB will work for your basic project.<br>
+I recommend you use Git, or SVN if you prefer that. I believe Altium actually incorporates SVN but I’m a Git guy myself, and it does have some Git support (although I still use a terminal).</p>
+
+<hr>
+<h3 id="adding-a-schematic">Adding a Schematic</h3>
+<hr>
+<p><strong>Right Click Project » Add New to Project » Schematic<br>
+Right Click Schematic » Rename</strong></p>
+
+<p>Rename as you find appropriate</p>
+
+<hr>
+<h3 id="configuring-properties">Configuring Properties</h3>
+<hr>
+<p>Property Configuration <strong>(Panels » Property)</strong><br>
+Set Visible Snap Grid (I go with 100 mil)<br>
+Set Layout Snap Grid (Again, 100 mil)<br>
+Set Page Color (Slightly Gray is Better on my Eyes, Choice is yours!)<br>
+Set Sheet Size (Whatever you prefer, it’s rare to actually print schematics nowadays, but I recommend it when you check traces!)</p>
+
+<hr>
+<h3 id="selecting-components">Selecting Components</h3>
+<hr>
+<p>There are two options in Altium, the Altium Vault and personal Libraries</p>
+
+<p>If your in a large company they’ll probably have their own library to ensuring manufacturing tolerances, but I like the Altium Vault Library cause it saves time and shows part availability. The standard component library does have your standard passives/connectors that you can use as well. I might make a tutorial on component generation later, but school’s killing me right now.</p>
+
+<hr>
+<h3 id="selecting-parts-via-manufacturer-part-search">Selecting Parts Via Manufacturer Part Search</h3>
+<hr>
+<p>Using Manufacturer Part Search <strong>(Panels » Manufacturer Part Search)</strong><br>
+It has built in filter systems if you click the funnel shaped symbol on the top left, querying works rather well, and then you can filter down to desired packaged size/stock/etc. after the fact.</p>
+
+<p><strong>example search: “smd led 0603 red”</strong></p>
+
+<p>This will yield plenty of suitable parts, and it integrates with Octopart (part availability from distributors) to tell you pricing and availability. Some components will have the footprint designed by Altium (typically there’s a small, medium, and large footprint). When designing for manufacture part availability and price is huge!</p>
+
+<p>when you picked out a part you want to use</p>
+
+<p><strong>right click » place » left click to place on schematic<br>
+right click » add supplier link and parameter to part(if you want to) » left click part on schematic</strong></p>
+
+<hr>
+<h3 id="selecting-parts-via-local-libraries">Selecting Parts Via Local Libraries</h3>
+<hr>
+<p>Using Local/Content Server Libraries</p>
+
+<p><strong>Panels » Components</strong></p>
+
+<p>I’ll be honest I don’t have a content server so I can’t really speak for it, but here’s how to use the local libraries</p>
+
+<hr>
+<h4 id="installing-libraries">Installing Libraries</h4>
+
+<hr>
+<p><strong>Components » The 3 Bar Icon » File Based Library Preferences » Installed » Installed</strong></p>
+
+<p>You can also just store the component in the local project directory if you’d like to use it within just the project. Querying and Parameterized search is the same for local components as Manufacturer Part Search. Placing the component is the same as well</p>
+
+<hr>
+<h3 id="wiring-the-schematic">Wiring the Schematic</h3>
+<hr>
+<ul>
+  <li>Ctrl+W » Draw Wires</li>
+  <li>Left click to place</li>
+  <li>Left Click Hold and drag to move wire and component</li>
+  <li>Left Click+Ctrl Hold and drag to move just components</li>
+  <li>Right Click to exit wire mode**</li>
+</ul>
+
+<p>If you prefer the arch to show where connections don’t exist it’s in the general page of preferences for the schematic</p>
+
+<hr>
+<h3 id="net-labels">Net Labels</h3>
+<hr>
+<p>Right Click the Quickbar in the wire slot and select net label <br>
+Use <strong>Tab » Preferences</strong> to declare the labels<br>
+Place on a net to label it</p>
+
+<hr>
+<h3 id="general-rules-for-drawing-schematics">General Rules for Drawing Schematics</h3>
+<hr>
+<ul>
+  <li>High voltage at the top, Ground at the bottom</li>
+  <li>Signals move form left to right</li>
+  <li>Don’t connect more than 2 signals at a single dot if possible, this ensures you can see what is and what isn’t a connection.</li>
+  <li>Ensure Reference Designators are done properly</li>
+  <li>Put relevant calculations right on the schematic with a text comment</li>
+  <li>Fill out your name, project name, and revision number on the schematic</li>
+</ul>
+
+<hr>
+<h2 id="schematic-hotkeys">Schematic Hotkeys</h2>
+<hr>
+<p><strong>Spacebar: Rotate Part 90 degrees<br>
+X: Flip along X-axis<br>
+Y: Flip along Y-axis<br>
+Tab: Display Properties for a placed part, any properties filled out are kept for subsequent places of the same component(good to label reference designators)<br>
+Ctrl+Wheel: Zoom in or Out<br>
+Right Click+Drag: Move schematic<br>
+Ctrl+PgDwn: Fit Sheet to page<br>
+G: Cycle snap grids<br>
+Ctrl+W: Draw Wires</strong></p>
+
+<h2 id="with-all-of-this-in-mind-go-ahead-and-draw-up-your-schematic-then-well-move-onto-erc-checks">With all of this in mind, go ahead and draw up your schematic. Then we’ll move onto ERC checks.</h2>
+
+<hr>
+<h3 id="configure-error-reporting">Configure Error Reporting</h3>
+<hr>
+<p><strong>Project » Project Options » Error Reporting</strong><br>
+Chose the severity level of each warning if you’d like to alter the defaults, as a beginner I’d leave it alone</p>
+
+<p><strong>Project » Project Options » Set up as desired</strong><br>
+If you want certain types of pins connecting to other pins configure it here. I recommend you atleast have warnings for unconnected pins</p>
+
+<hr>
+<h3 id="running-design-rule-check">Running Design Rule Check</h3>
+<hr>
+<p><strong>Panels » Messages<br>
+Project » Validate Projectname.PrjPcb</strong></p>
+
+<p>You will see errors outputted in the message box, double click the message to zoom on the error. if you consider the error to be acceptable (for example leaving one end of a potentiometer unconnected).</p>
+
+<p>Right click the message and place no erc for the connection if it’s a false error. If there’s an actual error fix it, then rerun the Validation</p>
+
+<hr>
+<h2 id="youre-now-done-with-the-schematic-check-out-the-pcb-tutorial-if-youre-responsible-for-the-layout-as-well-hope-this-helped-">You’re now done with the schematic! Check out the PCB tutorial if you’re responsible for the layout as well, hope this helped :)</h2>
+
+
+
+    <footer>
+
+  /altium_schematic_tutorial
+  <br><br>
+   <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20"> <a href="https://github.com/PatrickCPE">@PatrickCPE</a> 
+   <img class="emoji" title=":movie_camera:" alt=":movie_camera:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a5.png" height="20" width="20"> <a href="https://www.youtube.com/channel/UC6PF4hNLxFtxfc0eDMCGuiQ">@PatrickCPE</a> 
+
+</footer>
+
+
+  </body>
+</html>
