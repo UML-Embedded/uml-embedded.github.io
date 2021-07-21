@@ -11,21 +11,21 @@ layout: default
 </center>
 
 {% for post in site.posts %}
-  {% if post.category == "blog" and post.category != "" %}
-    <center>
-    <br>
-    <font size=6> {{post.title}} </font> <br>
-    <br>
-    <a href="{{ post.permalink }}">
-    <img src="{{ post.detail_image }}" style="width:350px;height:350px">
-    <br>
-    {{ post.description }}
-    <br>
-    <br>
-    <br>
-    </center>
-  {% endif %}
-{% endfor %}
+<center>
+    {% if post.category == "blog" %}
 
+        <a href="{{ post.permalink }}">
+        <font size=6> {{post.title}} </font>
+        <br>
+        {% if post.detail_image %}
+            <img src="{{ post.detail_image }}" style="width:350px;height:350px">
+        {% endif %}
+        <br>
+        {{post.description}}
+        </a>
+        <hr>
+    {% endif %}
+</center>
+{% endfor %}
 
 {{ content }}
