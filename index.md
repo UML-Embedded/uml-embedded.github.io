@@ -5,23 +5,27 @@ permalink: /
 permalink_name: /Home
 title: Home
 
-detail_image: assets/images/patrick_cpe/patrick_cpe_green.png
+detail_image: /assets/images/uml_embedded_ascii/uml_embedded_green.png
 
 ---
 
 # Welcome
 ---
-My names Patrick, I'm a Junior Computer Engineering Undergraduate at University of Massachussets Lowell. This sites home to my Blog, Project Write-Ups, Tutorials, and whatever else in the world I'm in the mood to post.
+The UML Embedded Club was created to let students learn about and play with
 
-# Interests
----
-* Electronics
-* Robotics
-* Embedded
-* Computing
-* 3D Printing
-* Hiking
-* Lord of the Rings
-* Never actually improving at guitar
-* Fixing stuff
-* Breaking stuff (not necessarily in that order)
+<hr>  
+
+* Microcontrollers  
+* FPGAs  
+* Embedded Computers  
+* Board Design  
+* Anything else ya can think of that's relevant and cool  
+
+<hr>
+
+Feel free to come by if any of that interests you, and there's plenty of resources for you to learn here on the site.
+
+reach out to me here: patrick_hoey1@student.uml.edu  
+or come visit us in person: (dates to be determined)
+
+Look forward to seeing ya :)

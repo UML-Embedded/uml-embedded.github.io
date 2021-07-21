@@ -4,6 +4,6 @@ title: Projects
 permalink: /projects
 permalink_name: /Projects
 
-detail_image: /assets/images/patrick_cpe/patrick_cpe_red.png
+detail_image: /assets/images/uml_embedded_ascii/uml_embedded_red.png
 
 ---

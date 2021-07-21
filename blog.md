@@ -4,7 +4,7 @@ title: Blog
 permalink: /blog
 permalink_name: /Blog
 
-detail_image: /assets/images/patrick_cpe/patrick_cpe_purple.png
+detail_image: /assets/images/uml_embedded_ascii/uml_embedded_purple.png
 
 ---
 
