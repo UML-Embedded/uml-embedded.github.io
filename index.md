@@ -28,4 +28,6 @@ Feel free to come by if any of that interests you, and there's plenty of resourc
 reach out to me here: patrick_hoey1@student.uml.edu  
 or come visit us in person: (dates to be determined)
 
+You can also join our Discord to see our updates on the club at the bottom of this page
+
 Look forward to seeing ya :)
