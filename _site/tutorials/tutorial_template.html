@@ -7,24 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
   <title>
-    UR Offline Simulator Install - 
+    Tutorial Template - 
   </title>
   <link rel="stylesheet" href="/assets/css/main.css">
   <script type="text/javascript" src=""></script>
 
   <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>UR Offline Simulator Install</title>
+<title>Tutorial Template</title>
 <meta name="generator" content="Jekyll v3.8.7" />
-<meta property="og:title" content="UR Offline Simulator Install" />
+<meta property="og:title" content="Tutorial Template" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="How to install UR Offline Simulator on Ubuntu and communicate over TCP/IP, because UR’s install scripts are woefully outdated and broken :)" />
-<meta property="og:description" content="How to install UR Offline Simulator on Ubuntu and communicate over TCP/IP, because UR’s install scripts are woefully outdated and broken :)" />
-<link rel="canonical" href="http://localhost:4000/tutorials/UR_Simulator" />
-<meta property="og:url" content="http://localhost:4000/tutorials/UR_Simulator" />
+<meta name="description" content="Basic Template for writing a tutorial. Make a pull request when you finish writing one up :)" />
+<meta property="og:description" content="Basic Template for writing a tutorial. Make a pull request when you finish writing one up :)" />
+<link rel="canonical" href="http://localhost:4000/tutorials/tutorial_template.html" />
+<meta property="og:url" content="http://localhost:4000/tutorials/tutorial_template.html" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-02-16T16:52:46-05:00" />
+<meta property="article:published_time" content="2021-04-23T22:41:46-04:00" />
 <script type="application/ld+json">
-{"headline":"UR Offline Simulator Install","dateModified":"2021-02-16T16:52:46-05:00","datePublished":"2021-02-16T16:52:46-05:00","url":"http://localhost:4000/tutorials/UR_Simulator","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tutorials/UR_Simulator"},"description":"How to install UR Offline Simulator on Ubuntu and communicate over TCP/IP, because UR’s install scripts are woefully outdated and broken :)","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/tutorials/tutorial_template.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tutorials/tutorial_template.html"},"dateModified":"2021-04-23T22:41:46-04:00","headline":"Tutorial Template","description":"Basic Template for writing a tutorial. Make a pull request when you finish writing one up :)","datePublished":"2021-04-23T22:41:46-04:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -36,7 +36,7 @@
     <header>
   <div class="menu">
     <ul>
-      <li class="page_title">UR Offline Simulator Install</li>
+      <li class="page_title">Tutorial Template</li>
 <li><a href="/">/Home</a></li>
 <li><a href="/tutorial">/Tutorials</a></li>
 <li><a href="/projects">/Projects</a></li>
@@ -47,39 +47,45 @@
 </header>
 
 
-    <img class="detail_header" src="/assets/images/ur5.png"><center>
-<h1></h1>
+    <img class="detail_header" src="/assets/images/posts/tutorials/tutorial_template/soft_robotics_repo.jpg"><center>
+<h1>Tutorial Template</h1>
 </center>
 
 <hr>
-<h2 id="downloading-and-setting-up">Downloading and Setting Up</h2>
+<h1 id="heres-a-basic-template">Here’s a basic template</h1>
+
+<p>You can write plane text just like this. If you want a return character to appear before reaching the end of the screen
+you need to put two spaces after the end of the line.<br>
+So after that period there are two spaces!</p>
+
+<p>If you don’t include detail_image it will generate without it</p>
+
+<p>Here’s an example of centering an image (I use the html version cause markdown always breaks for me lol)</p>
+<center>
+<img src="/assets/images/posts/tutorials/tutorial_template/sr_gripper_fsm.png" alt="Soft Robotic Gripper State Machine">
+</center>
+
+<h2 id="subheadings-are-like-this-">Subheadings are like this :)</h2>
 <ul>
-  <li>Go to universal-robots.com/download</li>
-  <li>navigate to software -&gt; offline for non linux (guess what their linux version relies on libcurl3 which hasn’t been supported in ages)</li>
-  <li>download the latest version</li>
-  <li>download virtualbox</li>
-  <li>unrar the download from ur with unrar x <filename></filename>
-</li>
+  <li>And You</li>
+  <li>
+    <p>Can do a dotted list like this</p>
+  </li>
+  <li>Or this</li>
+  <li>again, this</li>
 </ul>
 
-<p>open virtual box</p>
-<ul>
-  <li>New</li>
-  <li>name -&gt; Whatever, Type Linux, Version: Ubuntu</li>
-  <li>Memory 768 MB</li>
-  <li>Use existing hard drive file</li>
-  <li>Navigate to where you unRARed the .rar package and select the top module</li>
-  <li>Create</li>
-  <li>Start</li>
-</ul>
-
-<p>On the virtual machine settings make network bridged to allow two way networking between
-host and the virtual machine, reboot machine to have it take affect</p>
-
-<p>This is likely just a virtual machine issue, in real life it’s an ethernet connection</p>
+<ol>
+  <li>Or you can number it</li>
+  <li>Test</li>
+  <li>It’s funny cause if you label this row 4. in the markdown it still says 3 on the site</li>
+  <li>Remember, everything is white space sensitive. The space after the number or bullet list symbols are required.</li>
+</ol>
 
 <hr>
 <h2 id="communicating-with-the-ur-computer-via-tcpip">Communicating with the UR Computer via TCP/IP</h2>
+<h3 id="heres-some-random-example-code-i-have-this-is-a-python-tcpip-client">Here’s some random example code I have. This is a python TCP/IP Client</h3>
+<h4 id="you-just-need-to-specify-the-language-after-the-backticks">You Just need to specify the language after the backticks</h4>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">socket</span>
 
 <span class="n">HOST</span> <span class="o">=</span> <span class="s">"10.0.0.65"</span>   <span class="c1">#UR5 IP Address found in about panel on the robot's tablet
@@ -99,18 +105,11 @@ host and the virtual machine, reboot machine to have it take affect</p>
 <span class="k">print</span><span class="p">(</span><span class="s">"Received: "</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 </code></pre></div></div>
 
-<p>This code shows a simple example of how you’d communicate with the robot and set a digital output pin.</p>
-
-<p>The UR Computer has multiple ports, the one we wrote to allows you to send commands or listen to the state of the system.</p>
-
-<p>There are additional ports that only allow you to listen to the system state. My next goal is going to be to listen to this port, and create a wrapper for you to read
-any state updates from in Python. This requires you to deserialize a custom message, and will be hosted on my github soon.</p>
-
 
 
     <footer>
 
-  /UR_Simulator
+  /tutorial_template
   <br><br>
    <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20"> <a href="https://github.com/PatrickCPE">@PatrickCPE</a> 
    <img class="emoji" title=":movie_camera:" alt=":movie_camera:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a5.png" height="20" width="20"> <a href="https://www.youtube.com/channel/UC6PF4hNLxFtxfc0eDMCGuiQ">@PatrickCPE</a> 

@@ -12,11 +12,11 @@ layout: default
 
 {% for post in site.posts %}
 <center>
-    {% if post.category == "blog" %}
+    {% if post.category == "blogs" %}
 
-        <a href="{{ post.permalink }}">
         <font size=6> {{post.title}} </font>
         <br>
+        <a href="{{ post.permalink }}">
         {% if post.detail_image %}
             <img src="{{ post.detail_image }}" style="width:350px;height:350px">
         {% endif %}

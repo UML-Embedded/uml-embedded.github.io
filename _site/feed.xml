@@ -1,459 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-21T10:11:30-04:00</updated><id>http://localhost:4000/feed.xml</id><subtitle>&quot;Electronics, Microcontrollers, FPGAs, Embedded, Linux, Software, horrible projects that deserve to be thrown into oblivion. Just your everyday idiot who enjoys taking things apart, and maybe someday I'll learn how to put them back together&quot;</subtitle><entry><title type="html">Project #2 - Soft Robotics Gripper Driver</title><link href="http://localhost:4000/projects/sr_driver.html" rel="alternate" type="text/html" title="Project #2 - Soft Robotics Gripper Driver" /><published>2021-04-23T22:41:46-04:00</published><updated>2021-04-23T22:41:46-04:00</updated><id>http://localhost:4000/projects/sr_driver</id><content type="html" xml:base="http://localhost:4000/projects/sr_driver.html">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-21T14:50:00-04:00</updated><id>http://localhost:4000/feed.xml</id><subtitle>&quot;Electronics, Microcontrollers, FPGAs, Embedded, Linux, Software, horrible projects that deserve to be thrown into oblivion. Just your everyday idiot who enjoys taking things apart, and maybe someday I'll learn how to put them back together&quot;</subtitle><entry><title type="html">Blog Template</title><link href="http://localhost:4000/blogs/blog_template.html" rel="alternate" type="text/html" title="Blog Template" /><published>2021-04-23T22:41:46-04:00</published><updated>2021-04-23T22:41:46-04:00</updated><id>http://localhost:4000/blogs/blog_template</id><content type="html" xml:base="http://localhost:4000/blogs/blog_template.html">&lt;hr /&gt;
+&lt;h1 id=&quot;heres-a-basic-template&quot;&gt;Here’s a basic template&lt;/h1&gt;
 
-&lt;p&gt;A quick writeup of a ROS based driver for the soft robotic gripper, and the UR series arms.&lt;br /&gt;
-Can be found here: &lt;a href=&quot;https://github.com/PatrickCPE/sr_driver&quot;&gt;https://github.com/PatrickCPE/sr_driver&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You can write plane text just like this. If you want a return character to appear before reaching the end of the screen
+you need to put two spaces after the end of the line.&lt;br /&gt;
+So after that period there are two spaces!&lt;/p&gt;
 
-&lt;h1 id=&quot;background&quot;&gt;Background&lt;/h1&gt;
-&lt;p&gt;Soft Robotics developed this pretty sick pneumatic based gripper, but the control depends on the UR Pendant attached to the UR5 arm we use.
-This is extremely cumbersome, and it doesn’t work with the automated grasping system we have developed at our lab.&lt;br /&gt;
-After initial attempts at writing an entire TCP communication library I discovered a pretty well written and well documented library for the UR series robots Real Time Data Exchange Interface (RTDE) in UR_RTDE.&lt;/p&gt;
+&lt;p&gt;If you don’t include detail_image it will generate without it&lt;/p&gt;
 
-&lt;h1 id=&quot;sr_gripper-state-machine&quot;&gt;SR_Gripper State Machine&lt;/h1&gt;
-&lt;p&gt;In this state machine the message represents the +24V digital inputs into the codrive pneumatic pump system.&lt;br /&gt;
-The digital signals are created via the UR5’s control box’s. Bit 1 is D1, 2 is D2, 3 is D3.&lt;br /&gt;
-It should be noted that you only remain in these states for a certain period of time depending upon the pressure the system’s ADC reads.&lt;br /&gt;
-The below state diagram shows the basic concept.&lt;/p&gt;
-
+&lt;p&gt;Here’s an example of centering an image (I use the html version cause markdown always breaks for me lol)&lt;/p&gt;
 &lt;center&gt;
-&lt;img src=&quot;/assets/images/sr_gripper_fsm.png&quot; alt=&quot;Soft Robotic Gripper State Machine&quot; /&gt;
+&lt;img src=&quot;/assets/images/posts/tutorials/tutorial_template/sr_gripper_fsm.png&quot; alt=&quot;Soft Robotic Gripper State Machine&quot; /&gt;
 &lt;/center&gt;
 
-&lt;p&gt;Ignoring the neutral state which isn’t exactly useful in my particular use case you can simplify this quite a bit.&lt;br /&gt;
-Note the state machine ignores the pressure requirements for each state.&lt;br /&gt;
-After determine these through the precision technique of guessing and checking (intelligently of course ) I wrote up a ROS package that can handle this.&lt;br /&gt;
-After dealing with some strange type casting issues that totally didn’t nearly blow up this $1000 gripper the package worked.&lt;/p&gt;
-
-&lt;h1 id=&quot;using-the-package&quot;&gt;Using the Package&lt;/h1&gt;
+&lt;h2 id=&quot;subheadings-are-like-this-&quot;&gt;Subheadings are like this :)&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;Ensure that the pinout corresponds to your install of the SR Gripper (Analog Input 0, and Digital 0,1,2 in our case)&lt;/li&gt;
-  &lt;li&gt;Modify the code to support your installation pinout&lt;/li&gt;
-  &lt;li&gt;Update the voltage bounds to whatever grasp bounds you want (this was the guess and check portion done via the UR Pendant)&lt;/li&gt;
-  &lt;li&gt;If updating the voltage bounds update the watchdog timer, so it corresponds properly&lt;/li&gt;
+  &lt;li&gt;And You&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Can do a dotted list like this&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Or this&lt;/li&gt;
+  &lt;li&gt;again, this&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;When all of that is done it’s pretty simple&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;roscore&lt;/li&gt;
-  &lt;li&gt;rosrun sr_driver sr_driver.py&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Publish your desired state as a string to /sr_gripper&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;rostopic pub /sr_gripper std_msgs/String “data: ‘open’”&lt;/li&gt;
-  &lt;li&gt;rostopic pub /sr_gripper std_msgs/String “data: ‘closed’”&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="projects" /><summary type="html"></summary></entry><entry><title type="html">Altium Layout Tutorial</title><link href="http://localhost:4000/tutorials/altium_layout_tutorial.html" rel="alternate" type="text/html" title="Altium Layout Tutorial" /><published>2021-02-28T02:41:46-05:00</published><updated>2021-02-28T02:41:46-05:00</updated><id>http://localhost:4000/tutorials/altium_layout_guide</id><content type="html" xml:base="http://localhost:4000/tutorials/altium_layout_tutorial.html">&lt;hr /&gt;
-&lt;h2 id=&quot;creating-the-board&quot;&gt;Creating the board&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;ProjectName.PrjPcb » Right Click » Add New to Project » PCB&lt;br /&gt;
-PCB1.PcbDoc » Right Click » Rename(as desired)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;configuring-the-board&quot;&gt;Configuring the Board&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;h3 id=&quot;set-the-origin&quot;&gt;Set the Origin&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Edit » Origin » Set&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;set-units&quot;&gt;Set Units&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;View » Toggle Units	(Hotkey: Q)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;set-snapgrid&quot;&gt;Set Snapgrid&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Hotkey: G&lt;br /&gt;
-Hotkey: Ctrl+Shift+G&lt;/strong&gt;&lt;br /&gt;
-(Opens snapgrid settings rather than swap between predefined snapgrids)&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;edit-the-board-shape&quot;&gt;Edit the Board Shape&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Ctrl+PgDown: Zoom Fit&lt;br /&gt;
-View » Board Planning Mode	(Hotkey: 1)&lt;br /&gt;
-Design » Edit Board Shape&lt;/strong&gt;&lt;br /&gt;
-Adjust Board corners until desired board shape is achieved&lt;/p&gt;
-
-&lt;p&gt;You can also redraw with&lt;br /&gt;
-&lt;strong&gt;Design » Redefine Board Shape&lt;/strong&gt;&lt;br /&gt;
-Draw the polygon fill to create board&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;transfer-the-design&quot;&gt;Transfer the Design&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;h3 id=&quot;from-schematic&quot;&gt;from schematic&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Design » Update PCB Document Name.PcbDoc&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;from-pcb&quot;&gt;from PCB&lt;/h3&gt;
-&lt;p&gt;Design » Import Changes from Name.PrjPcb&lt;br /&gt;
-&lt;strong&gt;Validate Changes&lt;br /&gt;
-Execute Changes&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;If you’re missing any footprints you’ll get an error when you try to import&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;setup-layer-view&quot;&gt;Setup Layer View&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;Panels » View Configuration (Hotkey: L)&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;setting-up-the-stackup&quot;&gt;Setting Up the Stackup&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Design » Layer Stack Manager (Make sure to save!)&lt;br /&gt;
-Panels » Properties&lt;br /&gt;
-Properties » Enable Stack Symmetry&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Set up Planes and Signal layers (Standard is 1 oz. copper, if it’s a high power board 2 oz. may be neccassary but for hobby projects realize 2 oz. is expensive!)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Via Types » Ensure through hole via is present(If you need partial/embedded vias you’ll be able to figure it out here on your own)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Remember to save the stackup!&lt;/p&gt;
-
-&lt;h2 id=&quot;before-you-place-set-up-your-snap-grid&quot;&gt;Before you Place Set Up Your Snap Grid!&lt;/h2&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;basic-electrical-rule-configuration&quot;&gt;Basic Electrical Rule Configuration&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;Here’s some basics to get you started, ICs tend to have metric based packages so probably best to use mm here.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Route Width:&lt;/strong&gt; 0.25 mm	Where: Routing Grid Design Rule (Can also do whatever 50 ohm impedance is for your dielectric/stackup)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Clearance:&lt;/strong&gt; 0.25 mm		Where: Electrical Clearance Design Rule	(High speed signals need special care!)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Board Definition Grid:&lt;/strong&gt; 5 mm		Where: Cartesian Grid Editor&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Component Placement Grid:&lt;/strong&gt; 1 mm	Where: Cartesian Grid Editor&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Routing Grid:&lt;/strong&gt; 1 mm		Where: Cartesian Grid editor&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Via size:&lt;/strong&gt; 1 mm			Where: Routing Via style design rule	(High current traces may need larger/multiple vias)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Via hole:&lt;/strong&gt; 0.6 mm		Where: Routing Via Style Design Rule&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Altium Support Polar Grids if you’re doing a curved board but I’m not going into that&lt;/p&gt;
-
-&lt;p&gt;Cartesian Grid Editor (Hotkey:Ctrl+G)
-Set the grid definition here as well so you can see it well&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;pcb-rules&quot;&gt;PCB Rules&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Design » Rules&lt;/strong&gt;&lt;br /&gt;
-Set up everything according to what your manufacturer supports. Some manufactures will provide an altium rule file to import, and if they do love them eternally because so much less busy work&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;basic-setup&quot;&gt;Basic setup&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;clearance:&lt;/strong&gt; 0.25mm for all&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;signal:&lt;/strong&gt; 0.25mm standard&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;power:&lt;/strong&gt; thick traces, minimum can still be low for small offshoots to pins, etc&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;routing vias:&lt;/strong&gt; 1mm diameter, 0.6mm hole size&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Yes, you can be more specific, and if the boards high density please do look in depth at your manufacturers capabilities. If it’s a hobby project, who cares :)&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;placement&quot;&gt;Placement&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;My first boss taught me that 90% of the battle is placement, and I recommend you take his advice.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Spend time making the rat’s nest of traces as short as possible. Rotate parts around, make sure there is as short of a distance as possible for you to route wires.&lt;/li&gt;
-  &lt;li&gt;Place Connectors and any mechanical requirements First, then place components as fits.&lt;/li&gt;
-  &lt;li&gt;Make sure you place the bypass caps as close as physically possible to the VCC and GND pins of your components!&lt;/li&gt;
-  &lt;li&gt;If you need to use vias use them, there’s different theories on what’s best here. Some people prefer routing all on the top layer, some believe hiding the signals in your stack up is more beneficial.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I’ll point you to Henry Ott (hottconsultants.com) if you want to read up on the different stack ups and routing techniques
-I also hear good things about Howard Johnson, and John Howie(totally different names, not clones or anything) has some stuff on EMC, but it’s a bit harder to find&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;planes&quot;&gt;Planes&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Place your planes now!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;You need to have a small keepout area on the edge of the board to make manufacturers happy&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Polygon Pour » Draw » Click Polygon » Properties » Assign Net » Repour&lt;/strong&gt;&lt;br /&gt;
-(If you mess with things be sure to repour, it’ll fix some weird issues)&lt;/p&gt;
-
-&lt;p&gt;If you think yourself a genius feel free to attempt to split your ground planes, if your like the rest of us mortals do the best to ensure your board has as solid of a ground plane as possible.&lt;/p&gt;
-
-&lt;p&gt;A solid plane rather than a split one is almost always better.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;basic-routing&quot;&gt;Basic Routing&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Route Mode (Hotkey: Ctrl+W)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Connect everything with the shortest trace possible! Highest priority signals get routed first, remember some lines need controlled impedance/differential pair routing&lt;/li&gt;
-  &lt;li&gt;Route slow speed traces last&lt;/li&gt;
-  &lt;li&gt;Make sure to put vias to prevent any dead copper!&lt;/li&gt;
-  &lt;li&gt;There are fancy methods of making high speed transmission lines with vias along fancy traces but that’s application specific&lt;/li&gt;
-  &lt;li&gt;In general spread some via stitch out around the board after to help with return paths. The person who taught me taught me to do it pseudo randomly to prevent “resonance of something”. I can’t quite remember everything ¯_(ツ)_/¯ , but he’s a pretty bright guy so I’d assume he was right.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Autorouting is a privilege you earn after you learn when to use it. If you’re starting out you don’t know how to and shouldn’t. It can save time in some cases but I avoid it 95% of the time&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;boards-done---design-rule-check&quot;&gt;Boards Done -&amp;gt; Design Rule Check&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Tools » Design Rule Check&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Fix or approve any errors&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;check-your-board-out&quot;&gt;Check your board out!&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;Press 3 to view the board in 3D, make sure everything looks alright&lt;/li&gt;
-  &lt;li&gt;Press 2 to go back to routing mode&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;fabrication-outputsgetting-your-board-made&quot;&gt;Fabrication Outputs(Getting your board made!)&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;You can either output individual files from&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;File » Fabrication Output&lt;br /&gt;
-File » Assembly Output&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;You can also export to other tools such as HyperLynx (super fancy sim software for EMI that you’ll only get to play with if your company has a license) from the file tab.&lt;/p&gt;
-
-&lt;p&gt;You can print PDFs from here as well, Altium can output 3D pdf files that allow rotation and zoom in Adobe Acrobat almost as if you were looking at the assembly in Solidworks.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;setting-up-output-job-files&quot;&gt;Setting Up Output Job Files&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;This will output everything you want, think of it like the CMake of Altium&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Right Click Project » Add New to Project » Output Job File&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Save file as desired name&lt;/p&gt;
-
-&lt;h3 id=&quot;basic-set-of-outputs-to-set-up-in-the-outjob-file&quot;&gt;Basic set of outputs to set up in the .OutJob file&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Fabrication » Gerber » PCB Document&lt;br /&gt;
-Fabrication » NC Drill Files » PCB Document&lt;br /&gt;
-Assembly » Generate pick and place files » PCB Document&lt;br /&gt;
-Documentation Output » Schematic Prints » (single page for basic setup)&lt;br /&gt;
-Documentation Output » PCB Prints » PCB Document&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;configuring-the-outputs&quot;&gt;Configuring the outputs&lt;/h3&gt;
-&lt;p&gt;To Configure each output right click and hit configure&lt;br /&gt;
-&lt;strong&gt;Gerber Config&lt;/strong&gt;  - (Format, 4:4, Units:mm, layers » plot layers » used on, advanced » position on filme » reference to relative origin)&lt;/p&gt;
-
-&lt;h3 id=&quot;set-up-the-output-container&quot;&gt;Set up the output container&lt;/h3&gt;
-&lt;p&gt;Click the folder structure in output containers.&lt;/p&gt;
-
-&lt;p&gt;Now check the enable box for every file you want in that folder.&lt;br /&gt;
-Set the top file path to manually managed.&lt;/p&gt;
-
-&lt;p&gt;I recommend you store everything in a folder call outputs because it looks better.&lt;/p&gt;
-
-&lt;p&gt;You may want to go into advanced and enable auto load of gerber and NC drill outputs so you can check to see if they’re accurate after being created&lt;/p&gt;
-
-&lt;p&gt;Click the PDF Container and add your PDF’s to it, adjust this output structure as well.
-Name it as you’d like and configure auto open if you want&lt;/p&gt;
-
-&lt;p&gt;ODB++ is a new format that contains pick and place info alongside board info. Fancy board houses like it. If you’re getting high quality boards or a large number of boards made
-please just communicate with your board house/assembly house. They’ll tell you what they prefer, and if you give them what they prefer it’ll save you a bit of money hopefully&lt;/p&gt;
-
-&lt;p&gt;We’re going to add our BOM to the output as well, but we need to set it up first&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;active-bom&quot;&gt;Active BOM&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Right Click Project Name » Add new to project » Active Bom&lt;br /&gt;
-Properties » Set Production Quantity to see best prices&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Now go through each type of component and select the manufacture you want to buy from, Once you select the manufacturer give it a user rank by making a star rating.&lt;/p&gt;
-
-&lt;p&gt;Once you do this the status message on the far right side of the BOM should become a green check box for the items that were in stock.&lt;br /&gt;
-Add vendors links for any products that still need them by clicking the part and doing add solution.&lt;/p&gt;
-
-&lt;p&gt;If you replace a part with a new solution note that whatever option has the most stars will be used if available.&lt;br /&gt;
-(ie: if you have 2 different types of amps you can use but the preferred one is usually out of stock set the preffered to 5 stars and option 2 to 4)&lt;/p&gt;
-
-&lt;p&gt;If you entered the production amount the tool will help you pick from the different distributors and ensure stocks.&lt;/p&gt;
-
-&lt;p&gt;Save the bom and the project!&lt;/p&gt;
-
-&lt;p&gt;Now go back to your output job file and add the bom, I recommend you customize it and add either the single supplier or double supplier template.&lt;/p&gt;
-
-&lt;p&gt;Add it to your output folder container!&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;wrap-up&quot;&gt;Wrap Up&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;Save everything! You can reuse things like rules setups and your output job file for most cases!&lt;/p&gt;
-
-&lt;p&gt;Now go into your output job file and click your output containers.
-Click generate content for each and ensure it’s correct.&lt;/p&gt;
-
-&lt;p&gt;Now you have the pdfs of your schematic and board to share with everyone, and your manufacturing files! You’re all set to have it made :)&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;now-you-have-to-write-the-firmware-youve-been-avoiding-&quot;&gt;Now you have to write the firmware you’ve been avoiding :)&lt;/h3&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html">Creating the board ProjectName.PrjPcb » Right Click » Add New to Project » PCB PCB1.PcbDoc » Right Click » Rename(as desired) Configuring the Board Set the Origin Edit » Origin » Set Set Units View » Toggle Units (Hotkey: Q) Set Snapgrid Hotkey: G Hotkey: Ctrl+Shift+G (Opens snapgrid settings rather than swap between predefined snapgrids) Edit the Board Shape Ctrl+PgDown: Zoom Fit View » Board Planning Mode (Hotkey: 1) Design » Edit Board Shape Adjust Board corners until desired board shape is achieved You can also redraw with Design » Redefine Board Shape Draw the polygon fill to create board Transfer the Design from schematic Design » Update PCB Document Name.PcbDoc from PCB Design » Import Changes from Name.PrjPcb Validate Changes Execute Changes If you’re missing any footprints you’ll get an error when you try to import Setup Layer View Panels » View Configuration (Hotkey: L) Setting Up the Stackup Design » Layer Stack Manager (Make sure to save!) Panels » Properties Properties » Enable Stack Symmetry Set up Planes and Signal layers (Standard is 1 oz. copper, if it’s a high power board 2 oz. may be neccassary but for hobby projects realize 2 oz. is expensive!) Via Types » Ensure through hole via is present(If you need partial/embedded vias you’ll be able to figure it out here on your own) Remember to save the stackup! Before you Place Set Up Your Snap Grid! Basic Electrical Rule Configuration Here’s some basics to get you started, ICs tend to have metric based packages so probably best to use mm here. Route Width: 0.25 mm Where: Routing Grid Design Rule (Can also do whatever 50 ohm impedance is for your dielectric/stackup) Clearance: 0.25 mm Where: Electrical Clearance Design Rule (High speed signals need special care!) Board Definition Grid: 5 mm Where: Cartesian Grid Editor Component Placement Grid: 1 mm Where: Cartesian Grid Editor Routing Grid: 1 mm Where: Cartesian Grid editor Via size: 1 mm Where: Routing Via style design rule (High current traces may need larger/multiple vias) Via hole: 0.6 mm Where: Routing Via Style Design Rule Altium Support Polar Grids if you’re doing a curved board but I’m not going into that Cartesian Grid Editor (Hotkey:Ctrl+G) Set the grid definition here as well so you can see it well PCB Rules Design » Rules Set up everything according to what your manufacturer supports. Some manufactures will provide an altium rule file to import, and if they do love them eternally because so much less busy work Basic setup clearance: 0.25mm for all signal: 0.25mm standard power: thick traces, minimum can still be low for small offshoots to pins, etc routing vias: 1mm diameter, 0.6mm hole size Yes, you can be more specific, and if the boards high density please do look in depth at your manufacturers capabilities. If it’s a hobby project, who cares :) Placement My first boss taught me that 90% of the battle is placement, and I recommend you take his advice. Spend time making the rat’s nest of traces as short as possible. Rotate parts around, make sure there is as short of a distance as possible for you to route wires. Place Connectors and any mechanical requirements First, then place components as fits. Make sure you place the bypass caps as close as physically possible to the VCC and GND pins of your components! If you need to use vias use them, there’s different theories on what’s best here. Some people prefer routing all on the top layer, some believe hiding the signals in your stack up is more beneficial. I’ll point you to Henry Ott (hottconsultants.com) if you want to read up on the different stack ups and routing techniques I also hear good things about Howard Johnson, and John Howie(totally different names, not clones or anything) has some stuff on EMC, but it’s a bit harder to find Planes Place your planes now! You need to have a small keepout area on the edge of the board to make manufacturers happy Polygon Pour » Draw » Click Polygon » Properties » Assign Net » Repour (If you mess with things be sure to repour, it’ll fix some weird issues) If you think yourself a genius feel free to attempt to split your ground planes, if your like the rest of us mortals do the best to ensure your board has as solid of a ground plane as possible. A solid plane rather than a split one is almost always better. Basic Routing Route Mode (Hotkey: Ctrl+W) Connect everything with the shortest trace possible! Highest priority signals get routed first, remember some lines need controlled impedance/differential pair routing Route slow speed traces last Make sure to put vias to prevent any dead copper! There are fancy methods of making high speed transmission lines with vias along fancy traces but that’s application specific In general spread some via stitch out around the board after to help with return paths. The person who taught me taught me to do it pseudo randomly to prevent “resonance of something”. I can’t quite remember everything ¯_(ツ)_/¯ , but he’s a pretty bright guy so I’d assume he was right. Autorouting is a privilege you earn after you learn when to use it. If you’re starting out you don’t know how to and shouldn’t. It can save time in some cases but I avoid it 95% of the time Boards Done -&amp;gt; Design Rule Check Tools » Design Rule Check Fix or approve any errors Check your board out! Press 3 to view the board in 3D, make sure everything looks alright Press 2 to go back to routing mode Fabrication Outputs(Getting your board made!) You can either output individual files from File » Fabrication Output File » Assembly Output You can also export to other tools such as HyperLynx (super fancy sim software for EMI that you’ll only get to play with if your company has a license) from the file tab. You can print PDFs from here as well, Altium can output 3D pdf files that allow rotation and zoom in Adobe Acrobat almost as if you were looking at the assembly in Solidworks. Setting Up Output Job Files This will output everything you want, think of it like the CMake of Altium Right Click Project » Add New to Project » Output Job File Save file as desired name Basic set of outputs to set up in the .OutJob file Fabrication » Gerber » PCB Document Fabrication » NC Drill Files » PCB Document Assembly » Generate pick and place files » PCB Document Documentation Output » Schematic Prints » (single page for basic setup) Documentation Output » PCB Prints » PCB Document Configuring the outputs To Configure each output right click and hit configure Gerber Config - (Format, 4:4, Units:mm, layers » plot layers » used on, advanced » position on filme » reference to relative origin) Set up the output container Click the folder structure in output containers. Now check the enable box for every file you want in that folder. Set the top file path to manually managed. I recommend you store everything in a folder call outputs because it looks better. You may want to go into advanced and enable auto load of gerber and NC drill outputs so you can check to see if they’re accurate after being created Click the PDF Container and add your PDF’s to it, adjust this output structure as well. Name it as you’d like and configure auto open if you want ODB++ is a new format that contains pick and place info alongside board info. Fancy board houses like it. If you’re getting high quality boards or a large number of boards made please just communicate with your board house/assembly house. They’ll tell you what they prefer, and if you give them what they prefer it’ll save you a bit of money hopefully We’re going to add our BOM to the output as well, but we need to set it up first Active BOM Right Click Project Name » Add new to project » Active Bom Properties » Set Production Quantity to see best prices Now go through each type of component and select the manufacture you want to buy from, Once you select the manufacturer give it a user rank by making a star rating. Once you do this the status message on the far right side of the BOM should become a green check box for the items that were in stock. Add vendors links for any products that still need them by clicking the part and doing add solution. If you replace a part with a new solution note that whatever option has the most stars will be used if available. (ie: if you have 2 different types of amps you can use but the preferred one is usually out of stock set the preffered to 5 stars and option 2 to 4) If you entered the production amount the tool will help you pick from the different distributors and ensure stocks. Save the bom and the project! Now go back to your output job file and add the bom, I recommend you customize it and add either the single supplier or double supplier template. Add it to your output folder container! Wrap Up Save everything! You can reuse things like rules setups and your output job file for most cases! Now go into your output job file and click your output containers. Click generate content for each and ensure it’s correct. Now you have the pdfs of your schematic and board to share with everyone, and your manufacturing files! You’re all set to have it made :) Now you have to write the firmware you’ve been avoiding :)</summary></entry><entry><title type="html">Altium Schematic Tutorial</title><link href="http://localhost:4000/tutorials/altium_schematic_tutorial.html" rel="alternate" type="text/html" title="Altium Schematic Tutorial" /><published>2021-02-28T01:41:46-05:00</published><updated>2021-02-28T01:41:46-05:00</updated><id>http://localhost:4000/tutorials/altium_schematic_guide</id><content type="html" xml:base="http://localhost:4000/tutorials/altium_schematic_tutorial.html">&lt;hr /&gt;
-&lt;p&gt;I lost my old hard drive that had my Altium workflow guide and hotkeys guide on it. I figured I’ll write up this guide for
-anyone who’s interested in learning/switching to Altium. I suppose this will save me a lot of questions when I get around 
-to starting the embedded club in person. If you have any questions or suggestions to add to this guide reach out!&lt;/p&gt;
-
-&lt;p&gt;Note: Thou is the same as Mill for anyone who doesn’t know, 1/1000 of an inch!&lt;/p&gt;
-
-&lt;h1 id=&quot;altium-schematic-design-guide&quot;&gt;Altium Schematic Design Guide&lt;/h1&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;creating-the-project&quot;&gt;Creating the project&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;File » New » Project&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Default PCB will work for your basic project.&lt;br /&gt;
-I recommend you use Git, or SVN if you prefer that. I believe Altium actually incorporates SVN but I’m a Git guy myself, and it does have some Git support (although I still use a terminal).&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;adding-a-schematic&quot;&gt;Adding a Schematic&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Right Click Project » Add New to Project » Schematic&lt;br /&gt;
-Right Click Schematic » Rename&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Rename as you find appropriate&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;configuring-properties&quot;&gt;Configuring Properties&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;p&gt;Property Configuration &lt;strong&gt;(Panels » Property)&lt;/strong&gt;&lt;br /&gt;
-Set Visible Snap Grid (I go with 100 mil)&lt;br /&gt;
-Set Layout Snap Grid (Again, 100 mil)&lt;br /&gt;
-Set Page Color (Slightly Gray is Better on my Eyes, Choice is yours!)&lt;br /&gt;
-Set Sheet Size (Whatever you prefer, it’s rare to actually print schematics nowadays, but I recommend it when you check traces!)&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;selecting-components&quot;&gt;Selecting Components&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;p&gt;There are two options in Altium, the Altium Vault and personal Libraries&lt;/p&gt;
-
-&lt;p&gt;If your in a large company they’ll probably have their own library to ensuring manufacturing tolerances, but I like the Altium Vault Library cause it saves time and shows part availability. The standard component library does have your standard passives/connectors that you can use as well. I might make a tutorial on component generation later, but school’s killing me right now.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;selecting-parts-via-manufacturer-part-search&quot;&gt;Selecting Parts Via Manufacturer Part Search&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;p&gt;Using Manufacturer Part Search &lt;strong&gt;(Panels » Manufacturer Part Search)&lt;/strong&gt;&lt;br /&gt;
-It has built in filter systems if you click the funnel shaped symbol on the top left, querying works rather well, and then you can filter down to desired packaged size/stock/etc. after the fact.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;example search: “smd led 0603 red”&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;This will yield plenty of suitable parts, and it integrates with Octopart (part availability from distributors) to tell you pricing and availability. Some components will have the footprint designed by Altium (typically there’s a small, medium, and large footprint). When designing for manufacture part availability and price is huge!&lt;/p&gt;
-
-&lt;p&gt;when you picked out a part you want to use&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;right click » place » left click to place on schematic&lt;br /&gt;
-right click » add supplier link and parameter to part(if you want to) » left click part on schematic&lt;/strong&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;selecting-parts-via-local-libraries&quot;&gt;Selecting Parts Via Local Libraries&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;p&gt;Using Local/Content Server Libraries&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Panels » Components&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I’ll be honest I don’t have a content server so I can’t really speak for it, but here’s how to use the local libraries&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h4 id=&quot;installing-libraries&quot;&gt;Installing Libraries&lt;/h4&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Components » The 3 Bar Icon » File Based Library Preferences » Installed » Installed&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;You can also just store the component in the local project directory if you’d like to use it within just the project. Querying and Parameterized search is the same for local components as Manufacturer Part Search. Placing the component is the same as well&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;wiring-the-schematic&quot;&gt;Wiring the Schematic&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;Ctrl+W » Draw Wires&lt;/li&gt;
-  &lt;li&gt;Left click to place&lt;/li&gt;
-  &lt;li&gt;Left Click Hold and drag to move wire and component&lt;/li&gt;
-  &lt;li&gt;Left Click+Ctrl Hold and drag to move just components&lt;/li&gt;
-  &lt;li&gt;Right Click to exit wire mode**&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you prefer the arch to show where connections don’t exist it’s in the general page of preferences for the schematic&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;net-labels&quot;&gt;Net Labels&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;p&gt;Right Click the Quickbar in the wire slot and select net label &lt;br /&gt;
-Use &lt;strong&gt;Tab » Preferences&lt;/strong&gt; to declare the labels&lt;br /&gt;
-Place on a net to label it&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;general-rules-for-drawing-schematics&quot;&gt;General Rules for Drawing Schematics&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;High voltage at the top, Ground at the bottom&lt;/li&gt;
-  &lt;li&gt;Signals move form left to right&lt;/li&gt;
-  &lt;li&gt;Don’t connect more than 2 signals at a single dot if possible, this ensures you can see what is and what isn’t a connection.&lt;/li&gt;
-  &lt;li&gt;Ensure Reference Designators are done properly&lt;/li&gt;
-  &lt;li&gt;Put relevant calculations right on the schematic with a text comment&lt;/li&gt;
-  &lt;li&gt;Fill out your name, project name, and revision number on the schematic&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;schematic-hotkeys&quot;&gt;Schematic Hotkeys&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Spacebar: Rotate Part 90 degrees&lt;br /&gt;
-X: Flip along X-axis&lt;br /&gt;
-Y: Flip along Y-axis&lt;br /&gt;
-Tab: Display Properties for a placed part, any properties filled out are kept for subsequent places of the same component(good to label reference designators)&lt;br /&gt;
-Ctrl+Wheel: Zoom in or Out&lt;br /&gt;
-Right Click+Drag: Move schematic&lt;br /&gt;
-Ctrl+PgDwn: Fit Sheet to page&lt;br /&gt;
-G: Cycle snap grids&lt;br /&gt;
-Ctrl+W: Draw Wires&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;with-all-of-this-in-mind-go-ahead-and-draw-up-your-schematic-then-well-move-onto-erc-checks&quot;&gt;With all of this in mind, go ahead and draw up your schematic. Then we’ll move onto ERC checks.&lt;/h2&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;configure-error-reporting&quot;&gt;Configure Error Reporting&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Project » Project Options » Error Reporting&lt;/strong&gt;&lt;br /&gt;
-Chose the severity level of each warning if you’d like to alter the defaults, as a beginner I’d leave it alone&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Project » Project Options » Set up as desired&lt;/strong&gt;&lt;br /&gt;
-If you want certain types of pins connecting to other pins configure it here. I recommend you atleast have warnings for unconnected pins&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;running-design-rule-check&quot;&gt;Running Design Rule Check&lt;/h3&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Panels » Messages&lt;br /&gt;
-Project » Validate Projectname.PrjPcb&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;You will see errors outputted in the message box, double click the message to zoom on the error. if you consider the error to be acceptable (for example leaving one end of a potentiometer unconnected).&lt;/p&gt;
-
-&lt;p&gt;Right click the message and place no erc for the connection if it’s a false error. If there’s an actual error fix it, then rerun the Validation&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;youre-now-done-with-the-schematic-check-out-the-pcb-tutorial-if-youre-responsible-for-the-layout-as-well-hope-this-helped-&quot;&gt;You’re now done with the schematic! Check out the PCB tutorial if you’re responsible for the layout as well, hope this helped :)&lt;/h2&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html">I lost my old hard drive that had my Altium workflow guide and hotkeys guide on it. I figured I’ll write up this guide for anyone who’s interested in learning/switching to Altium. I suppose this will save me a lot of questions when I get around to starting the embedded club in person. If you have any questions or suggestions to add to this guide reach out! Note: Thou is the same as Mill for anyone who doesn’t know, 1/1000 of an inch! Altium Schematic Design Guide Creating the project File » New » Project Default PCB will work for your basic project. I recommend you use Git, or SVN if you prefer that. I believe Altium actually incorporates SVN but I’m a Git guy myself, and it does have some Git support (although I still use a terminal). Adding a Schematic Right Click Project » Add New to Project » Schematic Right Click Schematic » Rename Rename as you find appropriate Configuring Properties Property Configuration (Panels » Property) Set Visible Snap Grid (I go with 100 mil) Set Layout Snap Grid (Again, 100 mil) Set Page Color (Slightly Gray is Better on my Eyes, Choice is yours!) Set Sheet Size (Whatever you prefer, it’s rare to actually print schematics nowadays, but I recommend it when you check traces!) Selecting Components There are two options in Altium, the Altium Vault and personal Libraries If your in a large company they’ll probably have their own library to ensuring manufacturing tolerances, but I like the Altium Vault Library cause it saves time and shows part availability. The standard component library does have your standard passives/connectors that you can use as well. I might make a tutorial on component generation later, but school’s killing me right now. Selecting Parts Via Manufacturer Part Search Using Manufacturer Part Search (Panels » Manufacturer Part Search) It has built in filter systems if you click the funnel shaped symbol on the top left, querying works rather well, and then you can filter down to desired packaged size/stock/etc. after the fact. example search: “smd led 0603 red” This will yield plenty of suitable parts, and it integrates with Octopart (part availability from distributors) to tell you pricing and availability. Some components will have the footprint designed by Altium (typically there’s a small, medium, and large footprint). When designing for manufacture part availability and price is huge! when you picked out a part you want to use right click » place » left click to place on schematic right click » add supplier link and parameter to part(if you want to) » left click part on schematic Selecting Parts Via Local Libraries Using Local/Content Server Libraries Panels » Components I’ll be honest I don’t have a content server so I can’t really speak for it, but here’s how to use the local libraries Installing Libraries Components » The 3 Bar Icon » File Based Library Preferences » Installed » Installed You can also just store the component in the local project directory if you’d like to use it within just the project. Querying and Parameterized search is the same for local components as Manufacturer Part Search. Placing the component is the same as well Wiring the Schematic Ctrl+W » Draw Wires Left click to place Left Click Hold and drag to move wire and component Left Click+Ctrl Hold and drag to move just components Right Click to exit wire mode** If you prefer the arch to show where connections don’t exist it’s in the general page of preferences for the schematic Net Labels Right Click the Quickbar in the wire slot and select net label Use Tab » Preferences to declare the labels Place on a net to label it General Rules for Drawing Schematics High voltage at the top, Ground at the bottom Signals move form left to right Don’t connect more than 2 signals at a single dot if possible, this ensures you can see what is and what isn’t a connection. Ensure Reference Designators are done properly Put relevant calculations right on the schematic with a text comment Fill out your name, project name, and revision number on the schematic Schematic Hotkeys Spacebar: Rotate Part 90 degrees X: Flip along X-axis Y: Flip along Y-axis Tab: Display Properties for a placed part, any properties filled out are kept for subsequent places of the same component(good to label reference designators) Ctrl+Wheel: Zoom in or Out Right Click+Drag: Move schematic Ctrl+PgDwn: Fit Sheet to page G: Cycle snap grids Ctrl+W: Draw Wires With all of this in mind, go ahead and draw up your schematic. Then we’ll move onto ERC checks. Configure Error Reporting Project » Project Options » Error Reporting Chose the severity level of each warning if you’d like to alter the defaults, as a beginner I’d leave it alone Project » Project Options » Set up as desired If you want certain types of pins connecting to other pins configure it here. I recommend you atleast have warnings for unconnected pins Running Design Rule Check Panels » Messages Project » Validate Projectname.PrjPcb You will see errors outputted in the message box, double click the message to zoom on the error. if you consider the error to be acceptable (for example leaving one end of a potentiometer unconnected). Right click the message and place no erc for the connection if it’s a false error. If there’s an actual error fix it, then rerun the Validation You’re now done with the schematic! Check out the PCB tutorial if you’re responsible for the layout as well, hope this helped :)</summary></entry><entry><title type="html">UR Offline Simulator Install</title><link href="http://localhost:4000/tutorials/UR_Simulator" rel="alternate" type="text/html" title="UR Offline Simulator Install" /><published>2021-02-16T16:52:46-05:00</published><updated>2021-02-16T16:52:46-05:00</updated><id>http://localhost:4000/tutorials/UR_Sim_Install</id><content type="html" xml:base="http://localhost:4000/tutorials/UR_Simulator">&lt;hr /&gt;
-&lt;h2 id=&quot;downloading-and-setting-up&quot;&gt;Downloading and Setting Up&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Go to universal-robots.com/download&lt;/li&gt;
-  &lt;li&gt;navigate to software -&amp;gt; offline for non linux (guess what their linux version relies on libcurl3 which hasn’t been supported in ages)&lt;/li&gt;
-  &lt;li&gt;download the latest version&lt;/li&gt;
-  &lt;li&gt;download virtualbox&lt;/li&gt;
-  &lt;li&gt;unrar the download from ur with unrar x &lt;filename&gt;&lt;/filename&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;open virtual box&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;New&lt;/li&gt;
-  &lt;li&gt;name -&amp;gt; Whatever, Type Linux, Version: Ubuntu&lt;/li&gt;
-  &lt;li&gt;Memory 768 MB&lt;/li&gt;
-  &lt;li&gt;Use existing hard drive file&lt;/li&gt;
-  &lt;li&gt;Navigate to where you unRARed the .rar package and select the top module&lt;/li&gt;
-  &lt;li&gt;Create&lt;/li&gt;
-  &lt;li&gt;Start&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;On the virtual machine settings make network bridged to allow two way networking between
-host and the virtual machine, reboot machine to have it take affect&lt;/p&gt;
-
-&lt;p&gt;This is likely just a virtual machine issue, in real life it’s an ethernet connection&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Or you can number it&lt;/li&gt;
+  &lt;li&gt;Test&lt;/li&gt;
+  &lt;li&gt;It’s funny cause if you label this row 4. in the markdown it still says 3 on the site&lt;/li&gt;
+  &lt;li&gt;Remember, everything is white space sensitive. The space after the number or bullet list symbols are required.&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;hr /&gt;
 &lt;h2 id=&quot;communicating-with-the-ur-computer-via-tcpip&quot;&gt;Communicating with the UR Computer via TCP/IP&lt;/h2&gt;
+&lt;h3 id=&quot;heres-some-random-example-code-i-have-this-is-a-python-tcpip-client&quot;&gt;Here’s some random example code I have. This is a python TCP/IP Client&lt;/h3&gt;
+&lt;h4 id=&quot;you-just-need-to-specify-the-language-after-the-backticks&quot;&gt;You Just need to specify the language after the backticks&lt;/h4&gt;
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;socket&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;10.0.0.65&quot;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;#UR5 IP Address found in about panel on the robot's tablet
@@ -471,46 +50,106 @@ host and the virtual machine, reboot machine to have it take affect&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Received: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;repr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="blogs" /><summary type="html">Here’s a basic template</summary></entry><entry><title type="html">Project Template</title><link href="http://localhost:4000/projects/project_template.html" rel="alternate" type="text/html" title="Project Template" /><published>2021-04-23T22:41:46-04:00</published><updated>2021-04-23T22:41:46-04:00</updated><id>http://localhost:4000/projects/project_template</id><content type="html" xml:base="http://localhost:4000/projects/project_template.html">&lt;hr /&gt;
+&lt;h1 id=&quot;heres-a-basic-template&quot;&gt;Here’s a basic template&lt;/h1&gt;
 
-&lt;p&gt;This code shows a simple example of how you’d communicate with the robot and set a digital output pin.&lt;/p&gt;
+&lt;p&gt;You can write plane text just like this. If you want a return character to appear before reaching the end of the screen
+you need to put two spaces after the end of the line.&lt;br /&gt;
+So after that period there are two spaces!&lt;/p&gt;
 
-&lt;p&gt;The UR Computer has multiple ports, the one we wrote to allows you to send commands or listen to the state of the system.&lt;/p&gt;
+&lt;p&gt;Here’s an example of centering an image (I use the html version cause markdown always breaks for me lol)&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&quot;/assets/images/posts/tutorials/tutorial_template/sr_gripper_fsm.png&quot; alt=&quot;Soft Robotic Gripper State Machine&quot; /&gt;
+&lt;/center&gt;
 
-&lt;p&gt;There are additional ports that only allow you to listen to the system state. My next goal is going to be to listen to this port, and create a wrapper for you to read
-any state updates from in Python. This requires you to deserialize a custom message, and will be hosted on my github soon.&lt;/p&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html">Downloading and Setting Up Go to universal-robots.com/download navigate to software -&amp;gt; offline for non linux (guess what their linux version relies on libcurl3 which hasn’t been supported in ages) download the latest version download virtualbox unrar the download from ur with unrar x</summary></entry><entry><title type="html">Project #1 - List of Projects</title><link href="http://localhost:4000/projects/project_1.html" rel="alternate" type="text/html" title="Project #1 - List of Projects" /><published>2021-02-05T21:41:46-05:00</published><updated>2021-02-05T21:41:46-05:00</updated><id>http://localhost:4000/projects/project_1</id><content type="html" xml:base="http://localhost:4000/projects/project_1.html">&lt;hr /&gt;
-
-&lt;p&gt;What’s the purpose of this write-up? Well first off, it’s not a write up. This is just a list of things I might wanna make. These ideas can be thrown out on a whim, new ones will be added on a whim, and I’ll cross out whatever I either finish or decide isn’t worth my time. If you see any cool projects that I may be interested in/inspired by reach out to me! I’d love to see them.&lt;/p&gt;
-
-&lt;h1 id=&quot;projects&quot;&gt;Projects&lt;/h1&gt;
+&lt;h2 id=&quot;subheadings-are-like-this-&quot;&gt;Subheadings are like this :)&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;del&gt;Create this Site (Never intend to do Web again)&lt;/del&gt;&lt;/li&gt;
-  &lt;li&gt;Function Generator (either DDS and uController or implement a DDS on an FPGA)&lt;/li&gt;
-  &lt;li&gt;Mini PCB Quad Copter&lt;/li&gt;
-  &lt;li&gt;8 Bit Computer (74x Logic Chips)&lt;/li&gt;
-  &lt;li&gt;3D printer (cause my last design now lives in a landfill)&lt;/li&gt;
-  &lt;li&gt;Quadcopter Flight Controller&lt;/li&gt;
-  &lt;li&gt;EEPROM universal programmer&lt;/li&gt;
-  &lt;li&gt;Bench Power Supply (Cause I always need more)&lt;/li&gt;
-  &lt;li&gt;Robot Arm (ROS Drivers and all, and none of that whimpy servo stuff)&lt;/li&gt;
-  &lt;li&gt;Inverse Kinematic/Image Processing Accelerator&lt;/li&gt;
-  &lt;li&gt;Guitar Pedals (Am I really playing bad if I increase the distortion high enough?)&lt;/li&gt;
-  &lt;li&gt;All the Embedded Club Tutorials (is this a project? yes, purely because I said so)&lt;/li&gt;
-  &lt;li&gt;Broke Boi Spot Robot&lt;/li&gt;
-  &lt;li&gt;Try Out Embedded Rust (Thanks LLVM)&lt;/li&gt;
-  &lt;li&gt;Stepper Motor Driver Board (This will get used on robots and the 3D printer)&lt;/li&gt;
-  &lt;li&gt;RISKV/ARM Softcore Processor (The word reduced in reduced instruction set seems to be used rather loosely)&lt;/li&gt;
-  &lt;li&gt;Write some linux kernal drivers (Why? What kind? Who knows, but I bet it’ll be fun)&lt;/li&gt;
-  &lt;li&gt;Gameboy hack cartridge to allow ROM Hacks to be played on GBA. Cartridge should be reprogramable easily&lt;/li&gt;
-  &lt;li&gt;Discreet Logic Based VGA Driver (If I’m gunna make a 8 bit CPU let’s get some video going)&lt;/li&gt;
-  &lt;li&gt;Home Brewery (Am I a huge beer guy? No. Do I think it would be cool to program a mini brewery? Absolutely!)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="projects" /><summary type="html"></summary></entry><entry><title type="html">Blog Template</title><link href="http://localhost:4000/blog/blog_template.html" rel="alternate" type="text/html" title="Blog Template" /><published>2021-02-05T10:41:46-05:00</published><updated>2021-02-05T10:41:46-05:00</updated><id>http://localhost:4000/blog/blog_1</id><content type="html" xml:base="http://localhost:4000/blog/blog_template.html">&lt;hr /&gt;
-&lt;p&gt;I decided it’s about time to create my own personal site to showcase some projects, rant about random things, and post some tutorials for the problems I manage to solve. I can’t say I have an actual direction I’m intending to go with this, and I don’t think that’s a problem. This is something I’m updating in my free time in between classes and work, and I suppose it will be a nice way to hold myself accountable for all of the projects that I’ve been intending to do. Hopefully I can make peoples lives easier by writing guides for things that took me far too long to figure out (guides that I’ll be referring to a week later when I forget how to do something). Maybe my projects will spark cool project ideas for others that check out this site(send me a link to any cool project you make! It’s always fun to check em out).&lt;/p&gt;
+  &lt;li&gt;And You&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Can do a dotted list like this&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Or this&lt;/li&gt;
+  &lt;li&gt;again, this&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Or you can number it&lt;/li&gt;
+  &lt;li&gt;Test&lt;/li&gt;
+  &lt;li&gt;It’s funny cause if you label this row 4. in the markdown it still says 3 on the site&lt;/li&gt;
+  &lt;li&gt;Remember, everything is white space sensitive. The space after the number or bullet list symbols are required.&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;Given the state of the world, and the fact America is 90% locked down my workflow has been less than ideal. The electronics lab/classroom/bedroom/home-gym that I’ve been caged in has been driving me mad as of late. One thing I was really looking forward to about a semester ago in Fall of 2020 was starting up an Embedded Club at my University. I reached out to a lot of my friends, and poked around to see who would be interested and had about ~20 students who wanted to study it. I started writing guides and things like that and coming up with project ideas while waiting for the university to respond to my request to start the club up, only for them to eventually get back to me and say that they weren’t providing any funding for clubs(&lt;em&gt;Great to know that I’m paying full tuition to take a class through a computer screen, but all of my money that goes towards clubs suddenly dissapeared&lt;/em&gt;). Given this, and the fact I can’t just share the development boards and parts I have due to everything being remote I had to postpone the clubs creation. I wasn’t going to buy development boards for 30 kids on my own and parts to interface with just to have to ship them to 20+ kids myself. I’m in college, and for those of you who don’t speak American, that translates to “I’m Broke”.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;communicating-with-the-ur-computer-via-tcpip&quot;&gt;Communicating with the UR Computer via TCP/IP&lt;/h2&gt;
+&lt;h3 id=&quot;heres-some-random-example-code-i-have-this-is-a-python-tcpip-client&quot;&gt;Here’s some random example code I have. This is a python TCP/IP Client&lt;/h3&gt;
+&lt;h4 id=&quot;you-just-need-to-specify-the-language-after-the-backticks&quot;&gt;You Just need to specify the language after the backticks&lt;/h4&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;socket&lt;/span&gt;
 
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;10.0.0.65&quot;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;#UR5 IP Address found in about panel on the robot's tablet
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30002&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#UR5 TCP IP port found in the same location
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AF_INET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SOCK_STREAM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 
-&lt;p&gt;Hopefully, if vaccine distributions go as planned(&lt;em&gt;crossing my fingers&lt;/em&gt;) we’ll be back on campus for fall of 2021. I figured it will be a good idea to rewrite and create some new tutorials for the projects I had in mind for the embedded club on here, so that when school resumes in person I have it all ready. Hopefully the world goes back to normal soon. It’s rather funny that I spend my whole life opting to stay at home rather than go out, and now I wish I could go out every night. I guess it just comes down to the fact I want to chose to sit in front of a computer haha, not be forced to. Hopefully I’ll be able to make that same choice again soon.&lt;/p&gt;</content><author><name></name></author><category term="blog" /><summary type="html">I decided it’s about time to create my own personal site to showcase some projects, rant about random things, and post some tutorials for the problems I manage to solve. I can’t say I have an actual direction I’m intending to go with this, and I don’t think that’s a problem. This is something I’m updating in my free time in between classes and work, and I suppose it will be a nice way to hold myself accountable for all of the projects that I’ve been intending to do. Hopefully I can make peoples lives easier by writing guides for things that took me far too long to figure out (guides that I’ll be referring to a week later when I forget how to do something). Maybe my projects will spark cool project ideas for others that check out this site(send me a link to any cool project you make! It’s always fun to check em out).</summary></entry></feed>
+
+&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;set_digital_out(0,False)&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;#Newline termination required on all payload messages
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;utf8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Received: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;repr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="projects" /><summary type="html">Here’s a basic template</summary></entry><entry><title type="html">Tutorial Template</title><link href="http://localhost:4000/tutorials/tutorial_template.html" rel="alternate" type="text/html" title="Tutorial Template" /><published>2021-04-23T22:41:46-04:00</published><updated>2021-04-23T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/tutorial_template</id><content type="html" xml:base="http://localhost:4000/tutorials/tutorial_template.html">&lt;hr /&gt;
+&lt;h1 id=&quot;heres-a-basic-template&quot;&gt;Here’s a basic template&lt;/h1&gt;
+
+&lt;p&gt;You can write plane text just like this. If you want a return character to appear before reaching the end of the screen
+you need to put two spaces after the end of the line.&lt;br /&gt;
+So after that period there are two spaces!&lt;/p&gt;
+
+&lt;p&gt;If you don’t include detail_image it will generate without it&lt;/p&gt;
+
+&lt;p&gt;Here’s an example of centering an image (I use the html version cause markdown always breaks for me lol)&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&quot;/assets/images/posts/tutorials/tutorial_template/sr_gripper_fsm.png&quot; alt=&quot;Soft Robotic Gripper State Machine&quot; /&gt;
+&lt;/center&gt;
+
+&lt;h2 id=&quot;subheadings-are-like-this-&quot;&gt;Subheadings are like this :)&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;And You&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Can do a dotted list like this&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Or this&lt;/li&gt;
+  &lt;li&gt;again, this&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Or you can number it&lt;/li&gt;
+  &lt;li&gt;Test&lt;/li&gt;
+  &lt;li&gt;It’s funny cause if you label this row 4. in the markdown it still says 3 on the site&lt;/li&gt;
+  &lt;li&gt;Remember, everything is white space sensitive. The space after the number or bullet list symbols are required.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;communicating-with-the-ur-computer-via-tcpip&quot;&gt;Communicating with the UR Computer via TCP/IP&lt;/h2&gt;
+&lt;h3 id=&quot;heres-some-random-example-code-i-have-this-is-a-python-tcpip-client&quot;&gt;Here’s some random example code I have. This is a python TCP/IP Client&lt;/h3&gt;
+&lt;h4 id=&quot;you-just-need-to-specify-the-language-after-the-backticks&quot;&gt;You Just need to specify the language after the backticks&lt;/h4&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;socket&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;10.0.0.65&quot;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;#UR5 IP Address found in about panel on the robot's tablet
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30002&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#UR5 TCP IP port found in the same location
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AF_INET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SOCK_STREAM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+
+&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;set_digital_out(0,False)&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;#Newline termination required on all payload messages
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;utf8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Received: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;repr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html">Here’s a basic template</summary></entry></feed>
