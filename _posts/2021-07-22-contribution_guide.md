@@ -142,7 +142,7 @@ categories: tutorials
 
 # Body of your post goes here :)
 ```
-Category is the respective category of your post. The same categories as listed above, but the initial letter must be capitalized.
+Category is the respective category of your post. The same categories as listed above.
 
 The first set of dashes closes of the header that jekyll uses, and the second set is a simple markdown horizontal rule. I like the look of it so keep it around please.
 
