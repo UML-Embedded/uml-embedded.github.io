@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-21T18:37:08-04:00</updated><id>http://localhost:4000/feed.xml</id><subtitle>&quot;Electronics, Microcontrollers, FPGAs, Embedded, Linux, Software, horrible projects that deserve to be thrown into oblivion. Just your everyday idiot who enjoys taking things apart, and maybe someday I'll learn how to put them back together&quot;</subtitle><entry><title type="html">Blog Template</title><link href="http://localhost:4000/blogs/blog_template.html" rel="alternate" type="text/html" title="Blog Template" /><published>2021-04-23T22:41:46-04:00</published><updated>2021-04-23T22:41:46-04:00</updated><id>http://localhost:4000/blogs/blog_template</id><content type="html" xml:base="http://localhost:4000/blogs/blog_template.html">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-24T16:55:07-04:00</updated><id>http://localhost:4000/feed.xml</id><subtitle>&quot;Electronics, Microcontrollers, FPGAs, Embedded, Linux, Software, horrible projects that deserve to be thrown into oblivion. Just your everyday idiot who enjoys taking things apart, and maybe someday I'll learn how to put them back together&quot;</subtitle><entry><title type="html">Blog Template</title><link href="http://localhost:4000/blogs/blog_template.html" rel="alternate" type="text/html" title="Blog Template" /><published>2021-04-23T22:41:46-04:00</published><updated>2021-04-23T22:41:46-04:00</updated><id>http://localhost:4000/blogs/blog_template</id><content type="html" xml:base="http://localhost:4000/blogs/blog_template.html">&lt;hr /&gt;
 &lt;h1 id=&quot;heres-a-basic-template&quot;&gt;Here’s a basic template&lt;/h1&gt;
 
 &lt;p&gt;You can write plane text just like this. If you want a return character to appear before reaching the end of the screen
@@ -152,4 +152,176 @@ So after that period there are two spaces!&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Received: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;repr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html">Here’s a basic template</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html">Here’s a basic template</summary></entry><entry><title type="html">Contribution Guide</title><link href="http://localhost:4000/tutorials/contribution_guide.html" rel="alternate" type="text/html" title="Contribution Guide" /><published>2021-04-22T22:41:46-04:00</published><updated>2021-04-22T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/contribution_guide</id><content type="html" xml:base="http://localhost:4000/tutorials/contribution_guide.html">&lt;hr /&gt;
+&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;This site is based on GitHub Pages and Jekyll. You can use these to host a static site without ever touching html or css. Your posts are written in markdown(cheatsheet). Markdown is very simple to write basic posts in, and Jekyll handles the parsing of these files and creates a standard html and css based site for you.&lt;/p&gt;
+
+&lt;p&gt;Jekyll is fairly simple to use once you have it set up. You’ll need a few things to get going.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Linux (For Example: Ubuntu)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ruby-lang.org/en/documentation/installation/&quot;&gt;Ruby&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bundler.io/&quot;&gt;Bundler&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you don’t know how to use Linux here’s a &lt;a href=&quot;https://linuxjourney.com/&quot;&gt;great site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you don’t know git here’s a basic &lt;a href=&quot;https://git-scm.com/docs/gittutorial&quot;&gt;guide&lt;/a&gt;. I didn’t vet this thoroughly, but it
+looks decent enough.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;To download the project simply run:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/UML-Embedded/uml-embedded.github.io.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;project-structure&quot;&gt;Project Structure&lt;/h1&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;This tree shows you how the project is structured.&lt;/p&gt;
+
+&lt;p&gt;uml-embedded&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;index.md&lt;/li&gt;
+  &lt;li&gt;tutorials.md&lt;/li&gt;
+  &lt;li&gt;blog.md&lt;/li&gt;
+  &lt;li&gt;about.md&lt;/li&gt;
+  &lt;li&gt;404.html&lt;/li&gt;
+  &lt;li&gt;assets
+    &lt;ul&gt;
+      &lt;li&gt;images&lt;/li&gt;
+      &lt;li&gt;posts
+        &lt;ul&gt;
+          &lt;li&gt;tutorials
+            &lt;ul&gt;
+              &lt;li&gt;tutorial_template
+                &lt;ul&gt;
+                  &lt;li&gt;tutorial_template_asset1.png&lt;/li&gt;
+                  &lt;li&gt;tutorial_template_asset2.png&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;blogs&lt;/li&gt;
+          &lt;li&gt;projects&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;_posts
+    &lt;ul&gt;
+      &lt;li&gt;2021-01-1-tutorial_template.md&lt;/li&gt;
+      &lt;li&gt;2021-02-1-blog_template.md&lt;/li&gt;
+      &lt;li&gt;2021-03-1-project_template.md&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;This is a pretty rough outline of the structure. Unless your editing one of the main tabs you only really need to focus on the posts, and assets folders. The assets folder will hold the images you need to include in your post. Sort it under the appropriate category(for example, tutorials) and label it as you see fit within that folder.&lt;/p&gt;
+
+&lt;p&gt;Your post will go under the post folder will contain your post. The title of the post must follow the format shown. The date must be accurate, and you must use dashes as shown until you reach the post name. Within the post name please use underscores to separate words.&lt;/p&gt;
+
+&lt;p&gt;As long as you fill out the header information for the post properly, Jekyll will autogenerate everything for you. Here is an example post for the tutorial template post shown above&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;example-post&quot;&gt;Example Post&lt;/h1&gt;
+
+&lt;hr /&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Tutorial&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Template&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;post-title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Tutorial&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Template&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;s&quot;&gt;2021-01-01 21:41:46 -0500&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;permalink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/tutorials/tutorial_template.html&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;permalink_name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/tutorial_template&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;detail_image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/assets/images/posts/tutorials/tutorial_template/tutorial_template_asset2.png&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;tutorials&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Template&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;tutorials&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;:)&quot;&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Tutorials&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;---
+&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;# Body of your post goes here :)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Write all your stuff and things!
+&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; Here!
+&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Images too!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;/assets/images/tutorial_template/tutorial_template_asset1.png&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+Markdown can have embedded html too!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;going-through-the-example&quot;&gt;Going through the example&lt;/h1&gt;
+
+&lt;hr /&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;layout: post
+title:  &quot;Tutorial Template&quot;
+post-title:  &quot;Tutorial Template&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The layout will always be post. Do not change this unless you know what you’re doing.&lt;/p&gt;
+
+&lt;p&gt;The title is whatever you would like to call your post, and your post title will need to be the same.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;date:   2021-01-01 21:41:46 -0500
+permalink: /tutorials/tutorial_template.html
+permalink_name: /tutorial_template
+detail_image: /assets/images/posts/tutorials/tutorial_template/tutorial_template_asset2.png
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The date must be accurate to when you write the post. If the date and time occurs in the future the post will not be generated by Jekyll until that time occurs. The permalink should go /category/post_title.html&lt;/p&gt;
+
+&lt;p&gt;Categories&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;tutorials&lt;/li&gt;
+  &lt;li&gt;blogs&lt;/li&gt;
+  &lt;li&gt;projects&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Post title will be the title you previously chose in lower case letters, seperated by underscores rather than spaces.&lt;/p&gt;
+
+&lt;p&gt;The detail image will be pasted into the header page for each section. (ie: the tutorial page has a small clip of the image) and the post put the detail image at the top of the post itself. If you do not want a detail image simply delete the line.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;category: tutorials
+description: &quot;Template for tutorials :)&quot;
+
+&lt;span class=&quot;gh&quot;&gt;categories: tutorials
+---
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;
+---
+&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;# Body of your post goes here :)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Category is the respective category of your post. The same categories as listed above, but the initial letter must be capitalized.&lt;/p&gt;
+
+&lt;p&gt;The first set of dashes closes of the header that jekyll uses, and the second set is a simple markdown horizontal rule. I like the look of it so keep it around please.&lt;/p&gt;
+
+&lt;p&gt;Everything after this goes into the body of your post. You can write anything you want in markdown or html, and it will be generated by Jekyll into the main site.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;generating-the-site&quot;&gt;Generating the Site&lt;/h1&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;After you’ve written the post you’ll need to generate the site, and you should see your new post added to the respective category. You’ll need to run a few commands in the terminal to do it&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;uml-embedded.github.io
+bundle update
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That last command will host the site on a local server. The link will appear in the terminal after you enter it. Go ahead and look through the post to make sure it looks how you want, and when you’re satisfied, make a pull request.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;creating-a-pull-request-for-your-post&quot;&gt;Creating a Pull Request for Your Post&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;All you need to do is fork the repository, create a development branch, make your changes, push to your repo and then go on GitHub and generate a pull request.&lt;/p&gt;
+
+&lt;p&gt;Here’s a good &lt;a href=&quot;https://opensource.com/article/19/7/create-pull-request-github&quot;&gt;guide&lt;/a&gt; on that.&lt;/p&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html">Overview</summary></entry></feed>
