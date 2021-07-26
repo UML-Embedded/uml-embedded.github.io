@@ -1,0 +1,173 @@
+<hr />
+<h1 id="overview">Overview</h1>
+
+<hr />
+<p>This site is based on GitHub Pages and Jekyll. You can use these to host a static site without ever touching html or css. Your posts are written in markdown(cheatsheet). Markdown is very simple to write basic posts in, and Jekyll handles the parsing of these files and creates a standard html and css based site for you.</p>
+
+<p>Jekyll is fairly simple to use once you have it set up. You’ll need a few things to get going.</p>
+
+<ul>
+  <li>Linux (For Example: Ubuntu)</li>
+  <li><a href="https://www.ruby-lang.org/en/documentation/installation/">Ruby</a></li>
+  <li><a href="https://bundler.io/">Bundler</a></li>
+</ul>
+
+<p>If you don’t know how to use Linux here’s a <a href="https://linuxjourney.com/">great site</a>.</p>
+
+<p>If you don’t know git here’s a basic <a href="https://git-scm.com/docs/gittutorial">guide</a>. I didn’t vet this thoroughly, but it
+looks decent enough.</p>
+
+<hr />
+<p>To download the project simply run:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/UML-Embedded/uml-embedded.github.io.git
+</code></pre></div></div>
+
+<hr />
+<h1 id="project-structure">Project Structure</h1>
+
+<hr />
+<p>This tree shows you how the project is structured.</p>
+
+<p>uml-embedded</p>
+
+<ul>
+  <li>index.md</li>
+  <li>tutorials.md</li>
+  <li>blog.md</li>
+  <li>about.md</li>
+  <li>404.html</li>
+  <li>assets
+    <ul>
+      <li>images</li>
+      <li>posts
+        <ul>
+          <li>tutorials
+            <ul>
+              <li>tutorial_template
+                <ul>
+                  <li>tutorial_template_asset1.png</li>
+                  <li>tutorial_template_asset2.png</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>blogs</li>
+          <li>projects</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>_posts
+    <ul>
+      <li>2021-01-1-tutorial_template.md</li>
+      <li>2021-02-1-blog_template.md</li>
+      <li>2021-03-1-project_template.md</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<p>This is a pretty rough outline of the structure. Unless your editing one of the main tabs you only really need to focus on the posts, and assets folders. The assets folder will hold the images you need to include in your post. Sort it under the appropriate category(for example, tutorials) and label it as you see fit within that folder.</p>
+
+<p>Your post will go under the post folder will contain your post. The title of the post must follow the format shown. The date must be accurate, and you must use dashes as shown until you reach the post name. Within the post name please use underscores to separate words.</p>
+
+<p>As long as you fill out the header information for the post properly, Jekyll will autogenerate everything for you. Here is an example post for the tutorial template post shown above</p>
+
+<hr />
+<h1 id="example-post">Example Post</h1>
+
+<hr />
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span>  <span class="s2">"</span><span class="s">Tutorial</span><span class="nv"> </span><span class="s">Template"</span>
+<span class="na">post-title</span><span class="pi">:</span>  <span class="s2">"</span><span class="s">Tutorial</span><span class="nv"> </span><span class="s">Template"</span>
+<span class="na">date</span><span class="pi">:</span>   <span class="s">2021-01-01 21:41:46 -0500</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/tutorials/tutorial_template.html</span>
+<span class="na">permalink_name</span><span class="pi">:</span> <span class="s">/tutorial_template</span>
+<span class="na">detail_image</span><span class="pi">:</span> <span class="s">/assets/images/posts/tutorials/tutorial_template/tutorial_template_asset2.png</span>
+<span class="na">category</span><span class="pi">:</span> <span class="s">tutorials</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Template</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">tutorials</span><span class="nv"> </span><span class="s">:)"</span>
+
+<span class="na">categories</span><span class="pi">:</span> <span class="s">Tutorials</span>
+<span class="nn">---</span>
+
+<span class="p">---
+</span>
+<span class="gh"># Body of your post goes here :)</span>
+<span class="p">*</span> Write all your stuff and things!
+<span class="p">*</span> Here!
+<span class="p">![</span><span class="nv">Images too!</span><span class="p">](</span><span class="sx">/assets/images/tutorial_template/tutorial_template_asset1.png</span><span class="p">)</span>
+
+Markdown can have embedded html too!
+</code></pre></div></div>
+<hr />
+<h1 id="going-through-the-example">Going through the example</h1>
+
+<hr />
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>layout: post
+title:  "Tutorial Template"
+post-title:  "Tutorial Template"
+</code></pre></div></div>
+
+<p>The layout will always be post. Do not change this unless you know what you’re doing.</p>
+
+<p>The title is whatever you would like to call your post, and your post title will need to be the same.</p>
+
+<hr />
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>date:   2021-01-01 21:41:46 -0500
+permalink: /tutorials/tutorial_template.html
+permalink_name: /tutorial_template
+detail_image: /assets/images/posts/tutorials/tutorial_template/tutorial_template_asset2.png
+</code></pre></div></div>
+
+<p>The date must be accurate to when you write the post. If the date and time occurs in the future the post will not be generated by Jekyll until that time occurs. The permalink should go /category/post_title.html</p>
+
+<p>Categories</p>
+<ul>
+  <li>tutorials</li>
+  <li>blogs</li>
+  <li>projects</li>
+</ul>
+
+<p>Post title will be the title you previously chose in lower case letters, seperated by underscores rather than spaces.</p>
+
+<p>The detail image will be pasted into the header page for each section. (ie: the tutorial page has a small clip of the image) and the post put the detail image at the top of the post itself. If you do not want a detail image simply delete the line.</p>
+
+<hr />
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>category: tutorials
+description: "Template for tutorials :)"
+
+<span class="gh">categories: tutorials
+---
+</span><span class="p">
+---
+</span>
+<span class="gh"># Body of your post goes here :)</span>
+</code></pre></div></div>
+<p>Category is the respective category of your post. The same categories as listed above.</p>
+
+<p>The first set of dashes closes of the header that jekyll uses, and the second set is a simple markdown horizontal rule. I like the look of it so keep it around please.</p>
+
+<p>Everything after this goes into the body of your post. You can write anything you want in markdown or html, and it will be generated by Jekyll into the main site.</p>
+
+<hr />
+<h1 id="generating-the-site">Generating the Site</h1>
+
+<hr />
+<p>After you’ve written the post you’ll need to generate the site, and you should see your new post added to the respective category. You’ll need to run a few commands in the terminal to do it</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>uml-embedded.github.io
+bundle update
+bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<p>That last command will host the site on a local server. The link will appear in the terminal after you enter it. Go ahead and look through the post to make sure it looks how you want, and when you’re satisfied, make a pull request.</p>
+
+<hr />
+<h1 id="creating-a-pull-request-for-your-post">Creating a Pull Request for Your Post</h1>
+<hr />
+
+<p>All you need to do is fork the repository, create a development branch, make your changes, push to your repo and then go on GitHub and generate a pull request.</p>
+
+<p>Here’s a good <a href="https://opensource.com/article/19/7/create-pull-request-github">guide</a> on that.</p>

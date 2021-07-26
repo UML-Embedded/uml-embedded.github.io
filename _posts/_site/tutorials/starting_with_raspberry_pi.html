@@ -1,0 +1,132 @@
+<hr />
+
+<h1 id="requirements">Requirements</h1>
+<ul>
+  <li>Basic knowledge of <a href="https://linuxjourney.com/">Linux</a> (It’s possible to connect via windows but this tutorial assumes you’re working in a Linux environment)</li>
+  <li>Compatible <a href="https://www.raspberrypi.org/products/">Raspberry Pi</a> Model (Most will work. This was tested with the Pi Zero, Pi Zero W, and the Pi 3)</li>
+  <li>MicroSD Card and method to program it</li>
+  <li>Cables/Power Supply for your Pi (USB for the Zero, Power Cable for all other models)</li>
+</ul>
+
+<hr />
+<h1 id="starting-out">Starting Out</h1>
+
+<p>This tutorial assumes you are working on a Linux machine. I highly encourage you dual-boot your machine if you ever intend to do any serious work in electronics. You’ll find that you pretty much need to have both Windows and Linux if you want to take advantage of all the modern tools. If you’re new I reccomend just going with <a href="https://ubuntu.com/download/desktop">Ubuntu</a>.</p>
+
+<p>The Raspberry Pi that you purchased will be running Raspbian. This is a stripped down version of the Debian Linux distrobution(Ubuntu is based upon Debian as well). There are two versions of Raspian, Raspian Desktop, and Raspian Lite.</p>
+<ul>
+  <li>Raspian Desktop - Full Desktop Environment capable of running a monitor and doing things like browse the web and playing video.</li>
+  <li>Raspian Lite - Terminal only distrobution that doesn’t have bloat. This runs significantly faster and if you don’t need a monitor, this is what your system should use.</li>
+</ul>
+
+<hr />
+<h1 id="installing-raspian">Installing Raspian</h1>
+<p>There is a very simple tool for installing the Raspian image onto the SD card. Do the following command in your Linux terminal to install the package</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>snap <span class="nb">install </span>rpi-imager <span class="nt">--devmode</span>
+
+<span class="c"># When that is done installing do the following command to launch the gui</span>
+<span class="nb">sudo </span>rpi-imager
+</code></pre></div></div>
+
+<p>Ensure that you’re SD card is connected to your machine and go through the setup for your image.</p>
+
+<p>Chose OS -&gt; Raspberry Pi OS(Other) -&gt; Raspberry Pi OS (Lite)</p>
+
+<p><img src="/assets/images/posts/tutorials/starting_with_raspberry_pi/rpi_imager.png" alt="Raspian Install Image" />
+If you would like to install the full desktop suite opt for Raspberry Pi OS Full, but that is not the point of this tutorial. After your SD card is installed fully remove it and reinsert it into your computer. Two partitions should now appear in your system, Boot and RootFS. For our purposes we will only be touching the Boot partition.</p>
+
+<hr />
+<h1 id="configuring-the-os">Configuring the OS</h1>
+<p>All Pi’s will need the following steps to set them up.</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>PATHTOBOOT/Boot
+
+<span class="c">#This file enables ssh on the system</span>
+<span class="nb">touch </span>ssh
+</code></pre></div></div>
+
+<p>After that we need to do some configuration if your Pi has Wi-Fi. The only Pi I know that does not have Wi-Fi is the Pi Zero.
+You’ll need to create the following file within the Boot partition and name it wpa_supplicant.conf</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+    ssid="YOURSSID"
+    psk="YOURPASSWORD"
+}
+</code></pre></div></div>
+<p>Wherein the ssid is the name of your Wi-Fi network, and psk is your password. The Quotes remain around the string. For me personally I had to add the following line due to how my Wi-Fi network handles its keys.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>network={
+    ssid="YOURSSID"
+    psk="YOURPASSWORD"
+    key_mgmt=WPA-PSK
+}
+</code></pre></div></div>
+
+<p><img src="/assets/images/posts/tutorials/starting_with_raspberry_pi/boot_partition.png" alt="Boot Paritition Setup" /></p>
+<h1 id="todo-add-the-info-for-the-pi-zero-with-no-wi-fi">TODO add the info for the Pi Zero with no Wi-Fi</h1>
+
+<hr />
+<h1 id="connecting-to-your-pi">Connecting to Your Pi</h1>
+<p>Now that your pi is fully configured we’re going to connect to it via SSH. SSH is a method of logging into a different computer remotely. It’s extremely useful, and you’ll use it when logging into other computers on your network, or even when logging into remote servers that you may be using.</p>
+
+<p>This assumes you’re on the same Wi-Fi network as your Pi, or in the case of the Pi Zero (without Wi-Fi) that you’re connected to your computer via the USB Data Port.</p>
+
+<p>The Pi will take a minute or two to boot up and be accessible so after plugging it in give it a bit.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># If this shows that it is successfully receiving packets move forward with the next command</span>
+ping raspberrypi.local
+
+<span class="c"># This should allow you to login if you could ping successfully</span>
+ssh pi@raspberrypi.local
+<span class="c"># The password by default is raspberry</span>
+</code></pre></div></div>
+
+<p>If this works successfully then you’ve successfully logged into your pi :)</p>
+
+<p>If this does not work we’re going to have to look for the IP ourselves. We’re going to need a tool called nmap.</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>nmap
+
+<span class="c">#This gets your IP address</span>
+<span class="nb">hostname</span> <span class="nt">-I</span>
+<span class="c">#Take the IP address that was outputted in the start by that and paste it in the place of the IP in the following command</span>
+<span class="nb">sudo </span>nmap <span class="nt">-sn</span> 192.168.0.0/24
+<span class="c">#sudo is required to see the manufacturer of each device on your network</span>
+</code></pre></div></div>
+
+<p>Nmap will have a long list of devices on your network, and you should see one that has the Raspberry Pi Foundation as its creator. Take that IP address and run the following command.</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#Replace the IP address here with the IP you found for your Pi</span>
+ssh pi@192.168.0.13
+<span class="c">#The default password is raspberry</span>
+</code></pre></div></div>
+<p><img src="/assets/images/posts/tutorials/starting_with_raspberry_pi/ssh_success.png" alt="SSH Success" /></p>
+
+<hr />
+<h1 id="after-logging-in">After Logging In</h1>
+<p>Now that you’re in lets configure a few things. Run the following command on your shell that is now logged into the pi.</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This will open up an ncurses GUI to configure the Pi</span>
+<span class="nb">sudo </span>raspi-config
+</code></pre></div></div>
+<p>Inside the GUI we’re going to make a few changes</p>
+<ul>
+  <li>System Options -&gt; Password -&gt; Configure a new password for the pi user</li>
+  <li>System Options -&gt; Hostname -&gt; Configure a new hostname for your pi (this was previously raspberrypi)</li>
+  <li>Localisation Options -&gt; Customize all of these, so they suit your locale and keyboard type</li>
+</ul>
+
+<p><img src="/assets/images/posts/tutorials/starting_with_raspberry_pi/raspi_conf.png" alt="SSH Success" /></p>
+
+<p>Now that you set up the new hostname and password your next ssh session will require you to do</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh pi@newhostname
+<span class="c">#Password is whatever you set it to</span>
+</code></pre></div></div>
+
+<h1 id="conclussion">Conclussion</h1>
+<p>With all of that wrapped up and the configuration complete we’re all done :)
+Congrats on setting up your Pi to work headless!</p>
+
+<p>There’s one final tip I’ll leave you with, you should shutdown your Pi using the terminal rather than just unplugging it. This helps to prevent data corruption.</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#This command will shut down the pi</span>
+<span class="nb">sudo </span>shutdown now
+</code></pre></div></div>
