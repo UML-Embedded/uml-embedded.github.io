@@ -7,7 +7,7 @@ permalink: /tutorials/linux_basics.html
 permalink_name: /linux_basics
 detail_image: /assets/images/posts/tutorials/linux_basics/tux_funny.png
 category: tutorials
-description: "Guide to getting started with Linux. Covers burning an iso to a thumbdrive, installing the OS alongside Windows, and how to learn the basics of linux. There are some quick tips at the end that I recommend saving you time/pain when it comes to using Linux"
+description: "Linux Starter Guide. Covers burning an ISO to a thumbdrive, installing the OS alongside Windows, and learning the basics of linux. Tips and Tricks at the end :)"
 
 categories: Tutorials
 ---
