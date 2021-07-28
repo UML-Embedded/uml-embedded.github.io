@@ -81,7 +81,78 @@ If you have Windows on your machine, there will be an option to install Ubuntu a
 
 ---
 # Seriously, Read Closely, I'm Not Responsible If You Brick Windows Install
-Select instal alongside Windows. This will automatically partition your hard drive so that both operating systems can exist alongside one another. If you select one of the other options you will likely break your Windows install.
+Select install alongside Windows. This will automatically partition your hard drive so that both operating systems can exist alongside one another. If you select one of the other options you will likely break your Windows install (unless you know what you're doing).
 
+On the next page you will have a menu where you can drag the divider to determine how much of your hard drive space you will give to Ubuntu.
 
+<img src="/assets/images/posts/tutorials/linux_basics/ubuntu_partition_size.png" alt="Ubuntu Partition Type" width="700">
+Technically 10 GB is enough, I reccomend you use atleast 25 GB if you have the space, and in all honesty I would reccomend 100 GB if you never want to worry about this again. As long as your hard drive has the space I recommend making a fairly large install partition.
 
+Once you've determined a size that works for you, and does not interfere with the storage space you need for your Windows drive go ahead and click install now
+
+As long as the size you opted for work for you go ahead and hit continue once it asks if you would like to write changes to the disk. You've officially installed Linux :)
+
+---
+# Learning Linux
+I'm going to be honest, I don't have the time to write an entire Linux tutorial for you. I do have time to point you to
+the best one I know of.
+
+# [Linux Journey](https://linuxjourney.com/)
+<img src="/assets/images/posts/tutorials/linux_basics/linux_journey.png" alt="Linux Journey Screenshot" width="700">
+
+This site is a great guide to getting started with Linux. I highly recommend you do the entire command line section, text-fu section, and if you want to be able to argue with every other Linux user if Vim or Emacs is better, then I suggest you pick on of them to learn in the advanced text-fu section. 
+
+I also highly recommend you check out the lesson on Packages. Ubuntu uses apt, and I recommend you do some reading on tar, gzip, and compiling from source in that chapter as well.
+
+Once you've got those down you should be all set to use Linux. There's a lot more to learn along the way, but you're off to a great start :)
+
+---
+# Quick Tips
+Here are some simple things I want you to know about
+
+How to Update System
+```shell
+sudo apt update
+sudo apt upgrade
+```
+
+How to see your IP Address
+```shell
+#This shows the long version
+ifconfig
+
+#This shows the short version
+hostname -I
+```
+
+Terminator is a shell that allows you to open multiple within the same program. These shell sessions will share the variables that the initial shell had upon initialization
+```shell
+sudo apt install terminator
+```
+
+How to shorten commands
+```shell
+#Bind some long command to a shorter command
+alias lol="echo print out a long statement that says all this just by typing lol into a shell"
+```
+
+Dot files are hidden files in your system. You can see them by doing
+```shell
+ls -a
+
+#You can edit them just the same as any other file
+vim .bashrc
+```
+
+Your bashrc is a shell script that is executed once your terminal is first opened. I often add alias links to the bottom of it like the example shown earlier, so I can work efficiently
+```shell
+#~ is the symbol for your home directory in linux. This is the directory your shells initially open to
+vim ~/.bashrc
+#Just add anything you want to happen in all shell sessions such as aliases, etc. to end of the file
+```
+
+SSH is a command use to connect to remote Unix based machines
+```shell
+#Use this to work on a machine besides your own
+ssh username@ip_adress
+```

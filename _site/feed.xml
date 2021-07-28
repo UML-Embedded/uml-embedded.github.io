@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-27T20:42:29-04:00</updated><id>http://localhost:4000/feed.xml</id><subtitle>&quot;Electronics, Microcontrollers, FPGAs, Embedded, Linux, Software, horrible projects that deserve to be thrown into oblivion. Just your everyday idiot who enjoys taking things apart, and maybe someday I'll learn how to put them back together&quot;</subtitle><entry><title type="html">Starting with Raspberry Pi</title><link href="http://localhost:4000/tutorials/starting_with_raspberry_pi.html" rel="alternate" type="text/html" title="Starting with Raspberry Pi" /><published>2021-07-24T22:41:46-04:00</published><updated>2021-07-24T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/starting_with_raspberry_pi</id><content type="html" xml:base="http://localhost:4000/tutorials/starting_with_raspberry_pi.html">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-27T21:17:38-04:00</updated><id>http://localhost:4000/feed.xml</id><subtitle>&quot;Electronics, Microcontrollers, FPGAs, Embedded, Linux, Software, horrible projects that deserve to be thrown into oblivion. Just your everyday idiot who enjoys taking things apart, and maybe someday I'll learn how to put them back together&quot;</subtitle><entry><title type="html">Starting with Raspberry Pi</title><link href="http://localhost:4000/tutorials/starting_with_raspberry_pi.html" rel="alternate" type="text/html" title="Starting with Raspberry Pi" /><published>2021-07-24T22:41:46-04:00</published><updated>2021-07-24T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/starting_with_raspberry_pi</id><content type="html" xml:base="http://localhost:4000/tutorials/starting_with_raspberry_pi.html">&lt;hr /&gt;
 
 &lt;h1 id=&quot;requirements&quot;&gt;Requirements&lt;/h1&gt;
 &lt;ul&gt;
@@ -203,7 +203,74 @@ If you have Windows on your machine, there will be an option to install Ubuntu a
 
 &lt;hr /&gt;
 &lt;h1 id=&quot;seriously-read-closely-im-not-responsible-if-you-brick-windows-install&quot;&gt;Seriously, Read Closely, I’m Not Responsible If You Brick Windows Install&lt;/h1&gt;
-&lt;p&gt;Select instal alongside Windows. This will automatically partition your hard drive so that both operating systems can exist alongside one another. If you select one of the other options you will likely break your Windows install.&lt;/p&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html"></summary></entry><entry><title type="html">Contribution Guide</title><link href="http://localhost:4000/tutorials/contribution_guide.html" rel="alternate" type="text/html" title="Contribution Guide" /><published>2021-04-22T22:41:46-04:00</published><updated>2021-04-22T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/contribution_guide</id><content type="html" xml:base="http://localhost:4000/tutorials/contribution_guide.html">&lt;hr /&gt;
+&lt;p&gt;Select install alongside Windows. This will automatically partition your hard drive so that both operating systems can exist alongside one another. If you select one of the other options you will likely break your Windows install (unless you know what you’re doing).&lt;/p&gt;
+
+&lt;p&gt;On the next page you will have a menu where you can drag the divider to determine how much of your hard drive space you will give to Ubuntu.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/linux_basics/ubuntu_partition_size.png&quot; alt=&quot;Ubuntu Partition Type&quot; width=&quot;700&quot; /&gt;
+Technically 10 GB is enough, I reccomend you use atleast 25 GB if you have the space, and in all honesty I would reccomend 100 GB if you never want to worry about this again. As long as your hard drive has the space I recommend making a fairly large install partition.&lt;/p&gt;
+
+&lt;p&gt;Once you’ve determined a size that works for you, and does not interfere with the storage space you need for your Windows drive go ahead and click install now&lt;/p&gt;
+
+&lt;p&gt;As long as the size you opted for work for you go ahead and hit continue once it asks if you would like to write changes to the disk. You’ve officially installed Linux :)&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;learning-linux&quot;&gt;Learning Linux&lt;/h1&gt;
+&lt;p&gt;I’m going to be honest, I don’t have the time to write an entire Linux tutorial for you. I do have time to point you to
+the best one I know of.&lt;/p&gt;
+
+&lt;h1 id=&quot;linux-journey&quot;&gt;&lt;a href=&quot;https://linuxjourney.com/&quot;&gt;Linux Journey&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/linux_basics/linux_journey.png&quot; alt=&quot;Linux Journey Screenshot&quot; width=&quot;700&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This site is a great guide to getting started with Linux. I highly recommend you do the entire command line section, text-fu section, and if you want to be able to argue with every other Linux user if Vim or Emacs is better, then I suggest you pick on of them to learn in the advanced text-fu section.&lt;/p&gt;
+
+&lt;p&gt;I also highly recommend you check out the lesson on Packages. Ubuntu uses apt, and I recommend you do some reading on tar, gzip, and compiling from source in that chapter as well.&lt;/p&gt;
+
+&lt;p&gt;Once you’ve got those down you should be all set to use Linux. There’s a lot more to learn along the way, but you’re off to a great start :)&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;quick-tips&quot;&gt;Quick Tips&lt;/h1&gt;
+&lt;p&gt;Here are some simple things I want you to know about&lt;/p&gt;
+
+&lt;p&gt;How to Update System&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;How to see your IP Address&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#This shows the long version&lt;/span&gt;
+ifconfig
+
+&lt;span class=&quot;c&quot;&gt;#This shows the short version&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;hostname&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-I&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Terminator is a shell that allows you to open multiple within the same program. These shell sessions will share the variables that the initial shell had upon initialization&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;terminator
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;How to shorten commands&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#Bind some long command to a shorter command&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;echo print out a long statement that says all this just by typing lol into a shell&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Dot files are hidden files in your system. You can see them by doing&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#You can edit them just the same as any other file&lt;/span&gt;
+vim .bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Your bashrc is a shell script that is executed once your terminal is first opened. I often add alias links to the bottom of it like the example shown earlier, so I can work efficiently&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#~ is the symbol for your home directory in linux. This is the directory your shells initially open to&lt;/span&gt;
+vim ~/.bashrc
+&lt;span class=&quot;c&quot;&gt;#Just add anything you want to happen in all shell sessions such as aliases, etc. to end of the file&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;SSH is a command use to connect to remote Unix based machines&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#Use this to work on a machine besides your own&lt;/span&gt;
+ssh username@ip_adress
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html"></summary></entry><entry><title type="html">Contribution Guide</title><link href="http://localhost:4000/tutorials/contribution_guide.html" rel="alternate" type="text/html" title="Contribution Guide" /><published>2021-04-22T22:41:46-04:00</published><updated>2021-04-22T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/contribution_guide</id><content type="html" xml:base="http://localhost:4000/tutorials/contribution_guide.html">&lt;hr /&gt;
 &lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
 
 &lt;hr /&gt;
