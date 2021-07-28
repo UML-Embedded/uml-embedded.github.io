@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>
+    Linux Basics - 
+  </title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="text/javascript" src=""></script>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Linux Basics</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Linux Basics" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Guide to getting started with Linux. Covers burning an iso to a thumbdrive, installing the OS alongside Windows, and how to learn the basics of linux. There are some quick tips at the end that I recommend saving you time/pain when it comes to using Linux" />
+<meta property="og:description" content="Guide to getting started with Linux. Covers burning an iso to a thumbdrive, installing the OS alongside Windows, and how to learn the basics of linux. There are some quick tips at the end that I recommend saving you time/pain when it comes to using Linux" />
+<link rel="canonical" href="http://localhost:4000/tutorials/linux_basics.html" />
+<meta property="og:url" content="http://localhost:4000/tutorials/linux_basics.html" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-24T22:41:46-04:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/tutorials/linux_basics.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tutorials/linux_basics.html"},"dateModified":"2021-07-24T22:41:46-04:00","headline":"Linux Basics","description":"Guide to getting started with Linux. Covers burning an iso to a thumbdrive, installing the OS alongside Windows, and how to learn the basics of linux. There are some quick tips at the end that I recommend saving you time/pain when it comes to using Linux","datePublished":"2021-07-24T22:41:46-04:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+
+  <body class="small">
+
+    <header>
+  <div class="menu">
+    <ul>
+      <li class="page_title">Linux Basics</li>
+<li><a href="/">/Home</a></li>
+<li><a href="/tutorial">/Tutorials</a></li>
+<li><a href="/projects">/Projects</a></li>
+<li><a href="/blog">/Blog</a></li>
+<li><a href="/about">/About</a></li>
+</ul>
+  </div>
+</header>
+
+
+    <img class="detail_header" src="/assets/images/posts/tutorials/linux_basics/tux_funny.png"><center>
+<h1>Linux Basics</h1>
+</center>
+
+<hr>
+
+<h1 id="requirements">Requirements</h1>
+<ul>
+  <li>USB Drive - 4 GB or Greater (<strong><em>Note - Everything on this will be deleted!</em></strong>)</li>
+  <li>USB Port on your computer (Duh)</li>
+  <li>At least 25 GB of Storage free on your hard drive (I strongly recommend using 100 GB so you never need to think of it again if you have the space.)</li>
+</ul>
+
+<p>Note: This tutorial is meant for Computers that run Windows. If you are using a Mac, first off I recommend you don’t their hardware is overpriced and horrible and their OS is worse than Windows. Secondly, this guide will not help you.</p>
+
+<hr>
+<h1 id="starting-out">Starting Out</h1>
+
+<p>The first step in installing Linux onto your machine is determining which distribution you want to use. Think of Operating Systems as makes of car, and distributions as specific models of car. Windows is an operating system, but there are multiple versions(XP, Vista, 7, We don’t talk about 8, 10).</p>
+
+<p>Linux is the overarching operating system, but under that operating system you can choose your flavor. Sites like <a href="https://distrowatch.com/">distrowatch</a> will show you every new and trending distro, and it will have comparisons and news about each.</p>
+
+<p>For our sake, we’ll be using Ubuntu 20.04 LTS. This is the most recent release of Ubuntu, on of the primary Linux distributions out there. 99% software that runs on linux will run successfully on Ubuntu.</p>
+
+<hr>
+<h1 id="creating-a-boot-drive">Creating a Boot Drive</h1>
+
+<p>Let’s get our boot USB created. We’re going to need to donwload the <a href="https://ubuntu.com/download/desktop">Ubuntu 20.04 Desktop</a> ISO file from that page.</p>
+
+<p><img src="/assets/images/posts/tutorials/linux_basics/ubuntu_download_screenshot.png" alt="Ubuntu Download Picture" width="700"></p>
+
+<p>Next up we’re going to need to download a tool called <a href="https://rufus.ie/en_US/">Rufus</a> (aka the real hero of the Kim Possible series)
+<img src="/assets/images/posts/tutorials/linux_basics/rufus_download_screenshot.png" alt="Rufus Download Picture" width="700">
+Download from the first link shown in the image</p>
+
+<p>Next up we’re going to need Rufus to burn an ISO onto the flash drive that we’ll be using to install Linux on our computer. Make sure you have atleast a 4 GB flashdrive.</p>
+
+<p><strong><em>Again, everything on the flash drive will be deleted, so be careful if you have important files!</em></strong>
+<img src="/assets/images/posts/tutorials/linux_basics/rufus_usage_screenshot.png" alt="Rufus Usage Picture" width="700">
+Select your USB stick in the device panel. You can follow the setup shown in the above screenshot, except rather than select 18.04 select the Ubuntu 20.04 ISO you just downloaded. Once you’ve selected Ubuntu 20.04 LTS go ahead and hit start.</p>
+
+<p>Once Rufus is done we’re all set to install to our computer using the flash drive :)</p>
+
+<hr>
+<h1 id="installing-ubuntu">Installing Ubuntu</h1>
+
+<p>Next up we’re going to have to configure our computers BIOS to boot from the USB drive rather than our current operating system that is installed on our hard drive. You access your BIOS when your computer first boots up before your operating system kicks in.</p>
+
+<p>Unfortunately the button to enter BIOS depends on which manufacturer created your motherboard. For me personally I repeatedly press the F2 key as my computer powers on. You’re going to have to search for yourself to see what the key to access your BIOS is.</p>
+
+<p>Once you’re in your BIOS menu, you’ll need to navigate to the boot order tab. Once in the boot order tab adjust it such that the first thing that boots is your Ubuntu 20.04 flash drive that you created.</p>
+
+<p>After you do this, save the bios configuration and continue. Your system should boot into the live image contained within the USB drive. It will look something like this
+<img src="/assets/images/posts/tutorials/linux_basics/ubuntu_install_select.png" alt="Ubuntu Install Select" width="700">
+You can try the operating system without installing by clicking try. If you try it, you can chose to install from the desktop after. Once you’re ready to install move through the options.</p>
+
+<p>Once you reach the page asking about updates and other options shown here
+<img src="/assets/images/posts/tutorials/linux_basics/ubuntu_updates_software.png" alt="Ubuntu Software and Upgrades" width="700">
+I Strongly recommend you do a normal installation, but if you are strapped for hard drive space you can do a minimal install. I’ve had issues with downloading updates while installing Ubuntu before so I actually recommend not doing this(We can upgrade later).</p>
+
+<p>The box that asks if you would like to install third party software needs to be checked off. This will ensure that things like graphic cards and Wi-Fi chips work properly. Make sure to check this off.</p>
+
+<hr>
+<h1 id="seriously-read-this-closely">Seriously, Read This Closely</h1>
+<hr>
+
+<p>In the next stage we’re going to choose our installation type. You’ll see a screen like this
+<img src="/assets/images/posts/tutorials/linux_basics/ubuntu_install_type.png" alt="Ubuntu Install Type" width="700">
+If you have Windows on your machine, there will be an option to install Ubuntu alongside Windows.</p>
+
+<hr>
+<p><strong><em>Install Ubuntu alongside Windows</em></strong></p>
+
+<hr>
+<h1 id="seriously-read-closely-im-not-responsible-if-you-brick-windows-install">Seriously, Read Closely, I’m Not Responsible If You Brick Windows Install</h1>
+<p>Select instal alongside Windows. This will automatically partition your hard drive so that both operating systems can exist alongside one another. If you select one of the other options you will likely break your Windows install.</p>
+
+
+
+
+    <footer>
+
+  /linux_basics
+  <br><br>
+   <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20"> <a href="https://github.com/PatrickCPE">@PatrickCPE</a> 
+   <img class="emoji" title=":movie_camera:" alt=":movie_camera:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a5.png" height="20" width="20"> <a href="https://www.youtube.com/channel/UC6PF4hNLxFtxfc0eDMCGuiQ">@PatrickCPE</a> 
+
+</footer>
+
+
+  </body>
+</html>

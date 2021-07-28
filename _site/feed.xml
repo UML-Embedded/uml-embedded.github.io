@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-25T21:37:38-04:00</updated><id>http://localhost:4000/feed.xml</id><subtitle>&quot;Electronics, Microcontrollers, FPGAs, Embedded, Linux, Software, horrible projects that deserve to be thrown into oblivion. Just your everyday idiot who enjoys taking things apart, and maybe someday I'll learn how to put them back together&quot;</subtitle><entry><title type="html">Starting with Raspberry Pi</title><link href="http://localhost:4000/tutorials/starting_with_raspberry_pi.html" rel="alternate" type="text/html" title="Starting with Raspberry Pi" /><published>2021-07-24T22:41:46-04:00</published><updated>2021-07-24T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/starting_with_raspberry_pi</id><content type="html" xml:base="http://localhost:4000/tutorials/starting_with_raspberry_pi.html">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-27T20:42:29-04:00</updated><id>http://localhost:4000/feed.xml</id><subtitle>&quot;Electronics, Microcontrollers, FPGAs, Embedded, Linux, Software, horrible projects that deserve to be thrown into oblivion. Just your everyday idiot who enjoys taking things apart, and maybe someday I'll learn how to put them back together&quot;</subtitle><entry><title type="html">Starting with Raspberry Pi</title><link href="http://localhost:4000/tutorials/starting_with_raspberry_pi.html" rel="alternate" type="text/html" title="Starting with Raspberry Pi" /><published>2021-07-24T22:41:46-04:00</published><updated>2021-07-24T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/starting_with_raspberry_pi</id><content type="html" xml:base="http://localhost:4000/tutorials/starting_with_raspberry_pi.html">&lt;hr /&gt;
 
 &lt;h1 id=&quot;requirements&quot;&gt;Requirements&lt;/h1&gt;
 &lt;ul&gt;
@@ -132,7 +132,78 @@ Congrats on setting up your Pi to work headless!&lt;/p&gt;
 &lt;p&gt;There’s one final tip I’ll leave you with, you should shutdown your Pi using the terminal rather than just unplugging it. This helps to prevent data corruption.&lt;/p&gt;
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#This command will shut down the pi&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;shutdown now
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html"></summary></entry><entry><title type="html">Contribution Guide</title><link href="http://localhost:4000/tutorials/contribution_guide.html" rel="alternate" type="text/html" title="Contribution Guide" /><published>2021-04-22T22:41:46-04:00</published><updated>2021-04-22T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/contribution_guide</id><content type="html" xml:base="http://localhost:4000/tutorials/contribution_guide.html">&lt;hr /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html"></summary></entry><entry><title type="html">Linux Basics</title><link href="http://localhost:4000/tutorials/linux_basics.html" rel="alternate" type="text/html" title="Linux Basics" /><published>2021-07-24T22:41:46-04:00</published><updated>2021-07-24T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/linux_basics</id><content type="html" xml:base="http://localhost:4000/tutorials/linux_basics.html">&lt;hr /&gt;
+
+&lt;h1 id=&quot;requirements&quot;&gt;Requirements&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;USB Drive - 4 GB or Greater (&lt;strong&gt;&lt;em&gt;Note - Everything on this will be deleted!&lt;/em&gt;&lt;/strong&gt;)&lt;/li&gt;
+  &lt;li&gt;USB Port on your computer (Duh)&lt;/li&gt;
+  &lt;li&gt;At least 25 GB of Storage free on your hard drive (I strongly recommend using 100 GB so you never need to think of it again if you have the space.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note: This tutorial is meant for Computers that run Windows. If you are using a Mac, first off I recommend you don’t their hardware is overpriced and horrible and their OS is worse than Windows. Secondly, this guide will not help you.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;starting-out&quot;&gt;Starting Out&lt;/h1&gt;
+
+&lt;p&gt;The first step in installing Linux onto your machine is determining which distribution you want to use. Think of Operating Systems as makes of car, and distributions as specific models of car. Windows is an operating system, but there are multiple versions(XP, Vista, 7, We don’t talk about 8, 10).&lt;/p&gt;
+
+&lt;p&gt;Linux is the overarching operating system, but under that operating system you can choose your flavor. Sites like &lt;a href=&quot;https://distrowatch.com/&quot;&gt;distrowatch&lt;/a&gt; will show you every new and trending distro, and it will have comparisons and news about each.&lt;/p&gt;
+
+&lt;p&gt;For our sake, we’ll be using Ubuntu 20.04 LTS. This is the most recent release of Ubuntu, on of the primary Linux distributions out there. 99% software that runs on linux will run successfully on Ubuntu.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;creating-a-boot-drive&quot;&gt;Creating a Boot Drive&lt;/h1&gt;
+
+&lt;p&gt;Let’s get our boot USB created. We’re going to need to donwload the &lt;a href=&quot;https://ubuntu.com/download/desktop&quot;&gt;Ubuntu 20.04 Desktop&lt;/a&gt; ISO file from that page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/linux_basics/ubuntu_download_screenshot.png&quot; alt=&quot;Ubuntu Download Picture&quot; width=&quot;700&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next up we’re going to need to download a tool called &lt;a href=&quot;https://rufus.ie/en_US/&quot;&gt;Rufus&lt;/a&gt; (aka the real hero of the Kim Possible series)
+&lt;img src=&quot;/assets/images/posts/tutorials/linux_basics/rufus_download_screenshot.png&quot; alt=&quot;Rufus Download Picture&quot; width=&quot;700&quot; /&gt;
+Download from the first link shown in the image&lt;/p&gt;
+
+&lt;p&gt;Next up we’re going to need Rufus to burn an ISO onto the flash drive that we’ll be using to install Linux on our computer. Make sure you have atleast a 4 GB flashdrive.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Again, everything on the flash drive will be deleted, so be careful if you have important files!&lt;/em&gt;&lt;/strong&gt;
+&lt;img src=&quot;/assets/images/posts/tutorials/linux_basics/rufus_usage_screenshot.png&quot; alt=&quot;Rufus Usage Picture&quot; width=&quot;700&quot; /&gt;
+Select your USB stick in the device panel. You can follow the setup shown in the above screenshot, except rather than select 18.04 select the Ubuntu 20.04 ISO you just downloaded. Once you’ve selected Ubuntu 20.04 LTS go ahead and hit start.&lt;/p&gt;
+
+&lt;p&gt;Once Rufus is done we’re all set to install to our computer using the flash drive :)&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;installing-ubuntu&quot;&gt;Installing Ubuntu&lt;/h1&gt;
+
+&lt;p&gt;Next up we’re going to have to configure our computers BIOS to boot from the USB drive rather than our current operating system that is installed on our hard drive. You access your BIOS when your computer first boots up before your operating system kicks in.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately the button to enter BIOS depends on which manufacturer created your motherboard. For me personally I repeatedly press the F2 key as my computer powers on. You’re going to have to search for yourself to see what the key to access your BIOS is.&lt;/p&gt;
+
+&lt;p&gt;Once you’re in your BIOS menu, you’ll need to navigate to the boot order tab. Once in the boot order tab adjust it such that the first thing that boots is your Ubuntu 20.04 flash drive that you created.&lt;/p&gt;
+
+&lt;p&gt;After you do this, save the bios configuration and continue. Your system should boot into the live image contained within the USB drive. It will look something like this
+&lt;img src=&quot;/assets/images/posts/tutorials/linux_basics/ubuntu_install_select.png&quot; alt=&quot;Ubuntu Install Select&quot; width=&quot;700&quot; /&gt;
+You can try the operating system without installing by clicking try. If you try it, you can chose to install from the desktop after. Once you’re ready to install move through the options.&lt;/p&gt;
+
+&lt;p&gt;Once you reach the page asking about updates and other options shown here
+&lt;img src=&quot;/assets/images/posts/tutorials/linux_basics/ubuntu_updates_software.png&quot; alt=&quot;Ubuntu Software and Upgrades&quot; width=&quot;700&quot; /&gt;
+I Strongly recommend you do a normal installation, but if you are strapped for hard drive space you can do a minimal install. I’ve had issues with downloading updates while installing Ubuntu before so I actually recommend not doing this(We can upgrade later).&lt;/p&gt;
+
+&lt;p&gt;The box that asks if you would like to install third party software needs to be checked off. This will ensure that things like graphic cards and Wi-Fi chips work properly. Make sure to check this off.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;seriously-read-this-closely&quot;&gt;Seriously, Read This Closely&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;In the next stage we’re going to choose our installation type. You’ll see a screen like this
+&lt;img src=&quot;/assets/images/posts/tutorials/linux_basics/ubuntu_install_type.png&quot; alt=&quot;Ubuntu Install Type&quot; width=&quot;700&quot; /&gt;
+If you have Windows on your machine, there will be an option to install Ubuntu alongside Windows.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Install Ubuntu alongside Windows&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;seriously-read-closely-im-not-responsible-if-you-brick-windows-install&quot;&gt;Seriously, Read Closely, I’m Not Responsible If You Brick Windows Install&lt;/h1&gt;
+&lt;p&gt;Select instal alongside Windows. This will automatically partition your hard drive so that both operating systems can exist alongside one another. If you select one of the other options you will likely break your Windows install.&lt;/p&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html"></summary></entry><entry><title type="html">Contribution Guide</title><link href="http://localhost:4000/tutorials/contribution_guide.html" rel="alternate" type="text/html" title="Contribution Guide" /><published>2021-04-22T22:41:46-04:00</published><updated>2021-04-22T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/contribution_guide</id><content type="html" xml:base="http://localhost:4000/tutorials/contribution_guide.html">&lt;hr /&gt;
 &lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
 
 &lt;hr /&gt;
