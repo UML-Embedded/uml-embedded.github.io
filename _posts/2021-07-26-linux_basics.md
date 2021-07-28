@@ -2,7 +2,7 @@
 layout: post
 title:  "Linux Basics"
 post-title:  "Linux Basics"
-date:   2021-07-24 21:41:46 -0500
+date:   2021-07-26 21:41:46 -0500
 permalink: /tutorials/linux_basics.html
 permalink_name: /linux_basics
 detail_image: /assets/images/posts/tutorials/linux_basics/tux_funny.png
@@ -157,4 +157,12 @@ SSH is a command use to connect to remote Unix based machines
 ```shell
 #Use this to work on a machine besides your own
 ssh username@ip_adress
+```
+
+Man is a command used to read the manual of another command
+```shell
+#Read the manual for the program that gives you manuals
+man man
+#Read the manual for ssh
+man ssh
 ```
