@@ -86,7 +86,9 @@ Select install alongside Windows. This will automatically partition your hard dr
 On the next page you will have a menu where you can drag the divider to determine how much of your hard drive space you will give to Ubuntu.
 
 <img src="/assets/images/posts/tutorials/linux_basics/ubuntu_partition_size.png" alt="Ubuntu Partition Type" width="700">
-Technically 10 GB is enough, I reccomend you use atleast 25 GB if you have the space, and in all honesty I would reccomend 100 GB if you never want to worry about this again. As long as your hard drive has the space I recommend making a fairly large install partition.
+Technically 10 GB is enough, I reccomend you use atleast 25 GB if you have the space, and in all honesty I would recommend 250 GB if you never want to worry about this again. As long as your hard drive has the space I recommend making a fairly large install partition.
+
+If you intend to develop for Xilinx FPGAs on your Linux machine you'll need a huge amount of storage space for their IDE. I'm talking nearly 70 GB for that alone. You can thank Xilinx for making horrible software that is as bloated as that.
 
 Once you've determined a size that works for you, and does not interfere with the storage space you need for your Windows drive go ahead and click install now
 
