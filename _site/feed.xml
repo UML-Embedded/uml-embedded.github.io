@@ -1,138 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-28T04:57:29-04:00</updated><id>http://localhost:4000/feed.xml</id><subtitle>&quot;Electronics, Microcontrollers, FPGAs, Embedded, Linux, Software, horrible projects that deserve to be thrown into oblivion. Just your everyday idiot who enjoys taking things apart, and maybe someday I'll learn how to put them back together&quot;</subtitle><entry><title type="html">Starting with Raspberry Pi</title><link href="http://localhost:4000/tutorials/starting_with_raspberry_pi.html" rel="alternate" type="text/html" title="Starting with Raspberry Pi" /><published>2021-07-24T22:41:46-04:00</published><updated>2021-07-24T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/starting_with_raspberry_pi</id><content type="html" xml:base="http://localhost:4000/tutorials/starting_with_raspberry_pi.html">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-28T21:31:38-04:00</updated><id>http://localhost:4000/feed.xml</id><subtitle>&quot;Electronics, Microcontrollers, FPGAs, Embedded, Linux, Software, horrible projects that deserve to be thrown into oblivion. Just your everyday idiot who enjoys taking things apart, and maybe someday I'll learn how to put them back together&quot;</subtitle><entry><title type="html">Peripheral Basics</title><link href="http://localhost:4000/tutorials/peripheral_basics.html" rel="alternate" type="text/html" title="Peripheral Basics" /><published>2021-07-27T22:41:46-04:00</published><updated>2021-07-27T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/peripheral_basics</id><content type="html" xml:base="http://localhost:4000/tutorials/peripheral_basics.html">&lt;hr /&gt;
 
-&lt;h1 id=&quot;requirements&quot;&gt;Requirements&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;Basic knowledge of &lt;a href=&quot;https://linuxjourney.com/&quot;&gt;Linux&lt;/a&gt; (It’s possible to connect via windows but this tutorial assumes you’re working in a Linux environment)&lt;/li&gt;
-  &lt;li&gt;Compatible &lt;a href=&quot;https://www.raspberrypi.org/products/&quot;&gt;Raspberry Pi&lt;/a&gt; Model (Most will work. This was tested with the Pi Zero, Pi Zero W, and the Pi 3)&lt;/li&gt;
-  &lt;li&gt;MicroSD Card and method to program it&lt;/li&gt;
-  &lt;li&gt;Cables/Power Supply for your Pi (USB for the Zero, Power Cable for all other models)&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;what-are-peripherals&quot;&gt;What Are Peripherals&lt;/h1&gt;
+&lt;p&gt;At a low level, peripherals are anything that interact with a computer to either give it information or send out information. This information can be pretty much anything.&lt;/p&gt;
 
-&lt;hr /&gt;
-&lt;h1 id=&quot;starting-out&quot;&gt;Starting Out&lt;/h1&gt;
+&lt;p&gt;A mouse is a peripheral that inputs the X and Y movement you make, and your computer uses that peripheral to determine where you want your cursor to appear on the screen. Another example would be a temperature sensor that communicates over I2C (pronounced I squared C).&lt;/p&gt;
 
-&lt;p&gt;This tutorial assumes you are working on a Linux machine. I highly encourage you dual-boot your machine if you ever intend to do any serious work in electronics. You’ll find that you pretty much need to have both Windows and Linux if you want to take advantage of all the modern tools. If you’re new I reccomend just going with &lt;a href=&quot;https://ubuntu.com/download/desktop&quot;&gt;Ubuntu&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The Raspberry Pi that you purchased will be running Raspbian. This is a stripped down version of the Debian Linux distrobution(Ubuntu is based upon Debian as well). There are two versions of Raspian, Raspian Desktop, and Raspian Lite.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Raspian Desktop - Full Desktop Environment capable of running a monitor and doing things like browse the web and playing video.&lt;/li&gt;
-  &lt;li&gt;Raspian Lite - Terminal only distrobution that doesn’t have bloat. This runs significantly faster and if you don’t need a monitor, this is what your system should use.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Peripherals can be communicated with via numerous protocols, but we’re only going to cover a few basic types of peripherals and protocols here.&lt;/p&gt;
 
 &lt;hr /&gt;
-&lt;h1 id=&quot;installing-raspian&quot;&gt;Installing Raspian&lt;/h1&gt;
-&lt;p&gt;There is a very simple tool for installing the Raspian image onto the SD card. Do the following command in your Linux terminal to install the package&lt;/p&gt;
+&lt;h1 id=&quot;gpio-inputs&quot;&gt;GPIO Inputs&lt;/h1&gt;
+&lt;p&gt;This is the most basic type of peripheral you can attach to a processor. The pins either read the voltage on the line, or they write a voltage to the line. The voltage is digital, meaning it can only be on or off at the specific device’s voltage.&lt;/p&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;snap &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;rpi-imager &lt;span class=&quot;nt&quot;&gt;--devmode&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# When that is done installing do the following command to launch the gui&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;rpi-imager
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Ensure that you’re SD card is connected to your machine and go through the setup for your image.&lt;/p&gt;
-
-&lt;p&gt;Chose OS -&amp;gt; Raspberry Pi OS(Other) -&amp;gt; Raspberry Pi OS (Lite)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/starting_with_raspberry_pi/rpi_imager.png&quot; alt=&quot;RPI Imager&quot; width=&quot;700&quot; /&gt;
-If you would like to install the full desktop suite opt for Raspberry Pi OS Full, but that is not the point of this tutorial. After your SD card is installed fully remove it and reinsert it into your computer. Two partitions should now appear in your system, Boot and RootFS. For our purposes we will only be touching the Boot partition.&lt;/p&gt;
+&lt;p&gt;Inputs can have numerous configurations such as high impedance, pull-up, pull-down, or floating. These dictate the standard state of the pin. Pull up means the pin is typically high, while pull down means the pin is typically low. High impedance effectively places an infinite resistor in series, while floating means the pin can do anything.
+&lt;img src=&quot;/assets/images/posts/tutorials/peripheral_basics/pull_up_pull_down.png&quot; alt=&quot;Pull Up Pull Down Example&quot; width=&quot;700&quot; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
-&lt;h1 id=&quot;configuring-the-os&quot;&gt;Configuring the OS&lt;/h1&gt;
-&lt;p&gt;All Pi’s will need the following steps to set them up.&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;PATHTOBOOT/Boot
+&lt;h1 id=&quot;gpio-outputs&quot;&gt;GPIO Outputs&lt;/h1&gt;
+&lt;p&gt;Outputs have numerous configurations as well, such as push-pull, open-drain, and open-collector.&lt;/p&gt;
 
-&lt;span class=&quot;c&quot;&gt;#This file enables ssh on the system&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;ssh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;push-pull pins are capable of both sourcing and sinking current to create the desired output due to their structure shown below. Open-Drain pins are only capable of sinking current and rely on external pullups to set the voltage on the pin. This is shown below as well.
+&lt;img src=&quot;/assets/images/posts/tutorials/peripheral_basics/open_drain_push_pull.png&quot; alt=&quot;Open Drain and Push Pull GPIO Configurations&quot; width=&quot;700&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;After that we need to do some configuration if your Pi has Wi-Fi. The only Pi I know that does not have Wi-Fi is the Pi Zero.
-You’ll need to create the following file within the Boot partition and name it wpa_supplicant.conf&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-country=US
-
-network={
-    ssid=&quot;YOURSSID&quot;
-    psk=&quot;YOURPASSWORD&quot;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Wherein the ssid is the name of your Wi-Fi network, and psk is your password. The Quotes remain around the string. For me personally I had to add the following line due to how my Wi-Fi network handles its keys.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;network={
-    ssid=&quot;YOURSSID&quot;
-    psk=&quot;YOURPASSWORD&quot;
-    key_mgmt=WPA-PSK
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/starting_with_raspberry_pi/boot_partition.png&quot; alt=&quot;Boot Paritition Setup&quot; width=&quot;700&quot; /&gt;&lt;/p&gt;
-&lt;h1 id=&quot;todo-add-the-info-for-the-pi-zero-with-no-wi-fi&quot;&gt;TODO add the info for the Pi Zero with no Wi-Fi&lt;/h1&gt;
+&lt;p&gt;Open Collector is effectively the same thing as open drain except it uses a BJT rather than a FET, as shown below.
+&lt;img src=&quot;/assets/images/posts/tutorials/peripheral_basics/open_collector.png&quot; alt=&quot;Open Collector GPIO Configuration&quot; width=&quot;700&quot; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
-&lt;h1 id=&quot;connecting-to-your-pi&quot;&gt;Connecting to Your Pi&lt;/h1&gt;
-&lt;p&gt;Now that your pi is fully configured we’re going to connect to it via SSH. SSH is a method of logging into a different computer remotely. It’s extremely useful, and you’ll use it when logging into other computers on your network, or even when logging into remote servers that you may be using.&lt;/p&gt;
+&lt;h1 id=&quot;adcs&quot;&gt;ADCs&lt;/h1&gt;
+&lt;p&gt;Analog to Digital Converters(ADCs) change a message in the Analog domain into a message that can be processed in the Digital domain. They offer N bits of precision over a voltage range V. If you divide that voltage V by the N bits you receive the resolution of your ADC. Converting Analog signals to the Digital domain is a vital part of modern day signal processing.&lt;/p&gt;
 
-&lt;p&gt;This assumes you’re on the same Wi-Fi network as your Pi, or in the case of the Pi Zero (without Wi-Fi) that you’re connected to your computer via the USB Data Port.&lt;/p&gt;
+&lt;p&gt;Here is an example of what an ADC looks like under the hood at a basic level&lt;/p&gt;
 
-&lt;p&gt;The Pi will take a minute or two to boot up and be accessible so after plugging it in give it a bit.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/peripheral_basics/adc.png&quot; alt=&quot;Discreet Analog to Digital Converter&quot; width=&quot;700&quot; /&gt;
+You can see that there are 8 comparators. This means we can measure 8 bits separately. 8 is 2^3 which means by using an encoder we can measure an Analog signal with 8 bits of accuracy, and only need to read three lines.&lt;/p&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# If this shows that it is successfully receiving packets move forward with the next command&lt;/span&gt;
-ping raspberrypi.local
-
-&lt;span class=&quot;c&quot;&gt;# This should allow you to login if you could ping successfully&lt;/span&gt;
-ssh pi@raspberrypi.local
-&lt;span class=&quot;c&quot;&gt;# The password by default is raspberry&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If this works successfully then you’ve successfully logged into your pi :)&lt;/p&gt;
-
-&lt;p&gt;If this does not work we’re going to have to look for the IP ourselves. We’re going to need a tool called nmap.&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nmap
-
-&lt;span class=&quot;c&quot;&gt;#This gets your IP address&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;hostname&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-I&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#Take the IP address that was outputted in the start by that and paste it in the place of the IP in&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#the following command&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;-sn&lt;/span&gt; 192.168.0.0/24
-&lt;span class=&quot;c&quot;&gt;#sudo is required to see the manufacturer of each device on your network&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Nmap will have a long list of devices on your network, and you should see one that has the Raspberry Pi Foundation as its creator. Take that IP address and run the following command.&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#Replace the IP address here with the IP you found for your Pi&lt;/span&gt;
-ssh pi@192.168.0.13
-&lt;span class=&quot;c&quot;&gt;#The default password is raspberry&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/starting_with_raspberry_pi/ssh_success.png&quot; alt=&quot;SSH Success&quot; width=&quot;700&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;If Vref in this scenario was +5V, we would have 5 V / 8 Bits therefore each bit would have a resolution of ~625mV.&lt;/p&gt;
 
 &lt;hr /&gt;
-&lt;h1 id=&quot;after-logging-in&quot;&gt;After Logging In&lt;/h1&gt;
-&lt;p&gt;Now that you’re in lets configure a few things. Run the following command on your shell that is now logged into the pi.&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# This will open up an ncurses GUI to configure the Pi&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;raspi-config
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Inside the GUI we’re going to make a few changes&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;System Options -&amp;gt; Password -&amp;gt; Configure a new password for the pi user&lt;/li&gt;
-  &lt;li&gt;System Options -&amp;gt; Hostname -&amp;gt; Configure a new hostname for your pi (this was previously raspberrypi)&lt;/li&gt;
-  &lt;li&gt;Localisation Options -&amp;gt; Customize all of these, so they suit your locale and keyboard type&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;dacs&quot;&gt;DACs&lt;/h1&gt;
+&lt;p&gt;Digital to Analog Converters(DACs) are the matching pair to your ADCs. Much like we need to convert Analog Signals to Digital Signals, we must do the opposite as well. The music coming from your phone is stored digitally, but eventually the sound played via a speaker must be an Analog waveform.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/starting_with_raspberry_pi/raspi_conf.png&quot; alt=&quot;Raspi-Conf&quot; width=&quot;700&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;DACs have the same principle of a reference voltage V, N bits, and a resolution. An Example DAC is shown below.
+&lt;img src=&quot;/assets/images/posts/tutorials/peripheral_basics/dac.png&quot; alt=&quot;Discreet Digital to Analog Converter&quot; width=&quot;700&quot; /&gt;
+In this example you can see that each bit has a resistor that is double the value of the previous bit in series with the digital line. This means that by setting each individual bit high you can push a proportionate amount of current through the pin, and with the op amp acting inverting amplifier you can effectively translate the digital signals into a known analog signal with a known resolution.&lt;/p&gt;
 
-&lt;p&gt;Now that you set up the new hostname and password your next ssh session will require you to do&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh pi@newhostname
-&lt;span class=&quot;c&quot;&gt;#Password is whatever you set it to&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The resolution in this case if the voltage was +5V would be +5V / 4 Bits = 1.25 V. Note the output would be inverted though.&lt;/p&gt;
 
-&lt;h1 id=&quot;conclussion&quot;&gt;Conclussion&lt;/h1&gt;
-&lt;p&gt;With all of that wrapped up and the configuration complete we’re all done :)
-Congrats on setting up your Pi to work headless!&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;There are resistor to resistor DACs as well that are often utilized. Example below.
+&lt;img src=&quot;/assets/images/posts/tutorials/peripheral_basics/dac_r2r.png&quot; alt=&quot;Discreet Digital to Analog Converter R2R&quot; width=&quot;700&quot; /&gt;
+This is useful when you can fit more resistors, and you don’t need the op amp to drive the load.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/starting_with_raspberry_pi/pi_zero_w_picture.jpg&quot; alt=&quot;My Pi Zero W&quot; width=&quot;700&quot; /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;i2c&quot;&gt;I2C&lt;/h1&gt;
 
-&lt;p&gt;There’s one final tip I’ll leave you with, you should shutdown your Pi using the terminal rather than just unplugging it. This helps to prevent data corruption.&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#This command will shut down the pi&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;shutdown now
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html"></summary></entry><entry><title type="html">Linux Basics</title><link href="http://localhost:4000/tutorials/linux_basics.html" rel="alternate" type="text/html" title="Linux Basics" /><published>2021-07-24T22:41:46-04:00</published><updated>2021-07-24T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/linux_basics</id><content type="html" xml:base="http://localhost:4000/tutorials/linux_basics.html">&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;h1 id=&quot;spi&quot;&gt;SPI&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;wrapping-up&quot;&gt;Wrapping Up&lt;/h1&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html"></summary></entry><entry><title type="html">Linux Basics</title><link href="http://localhost:4000/tutorials/linux_basics.html" rel="alternate" type="text/html" title="Linux Basics" /><published>2021-07-26T22:41:46-04:00</published><updated>2021-07-26T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/linux_basics</id><content type="html" xml:base="http://localhost:4000/tutorials/linux_basics.html">&lt;hr /&gt;
 
 &lt;h1 id=&quot;requirements&quot;&gt;Requirements&lt;/h1&gt;
 &lt;ul&gt;
@@ -272,6 +198,147 @@ vim ~/.bashrc
 &lt;p&gt;SSH is a command use to connect to remote Unix based machines&lt;/p&gt;
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#Use this to work on a machine besides your own&lt;/span&gt;
 ssh username@ip_adress
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Man is a command used to read the manual of another command&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#Read the manual for the program that gives you manuals&lt;/span&gt;
+man man
+&lt;span class=&quot;c&quot;&gt;#Read the manual for ssh&lt;/span&gt;
+man ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html"></summary></entry><entry><title type="html">Starting with Raspberry Pi</title><link href="http://localhost:4000/tutorials/starting_with_raspberry_pi.html" rel="alternate" type="text/html" title="Starting with Raspberry Pi" /><published>2021-07-24T22:41:46-04:00</published><updated>2021-07-24T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/starting_with_raspberry_pi</id><content type="html" xml:base="http://localhost:4000/tutorials/starting_with_raspberry_pi.html">&lt;hr /&gt;
+
+&lt;h1 id=&quot;requirements&quot;&gt;Requirements&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Basic knowledge of &lt;a href=&quot;https://linuxjourney.com/&quot;&gt;Linux&lt;/a&gt; (It’s possible to connect via windows but this tutorial assumes you’re working in a Linux environment)&lt;/li&gt;
+  &lt;li&gt;Compatible &lt;a href=&quot;https://www.raspberrypi.org/products/&quot;&gt;Raspberry Pi&lt;/a&gt; Model (Most will work. This was tested with the Pi Zero, Pi Zero W, and the Pi 3)&lt;/li&gt;
+  &lt;li&gt;MicroSD Card and method to program it&lt;/li&gt;
+  &lt;li&gt;Cables/Power Supply for your Pi (USB for the Zero, Power Cable for all other models)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;starting-out&quot;&gt;Starting Out&lt;/h1&gt;
+
+&lt;p&gt;This tutorial assumes you are working on a Linux machine. I highly encourage you dual-boot your machine if you ever intend to do any serious work in electronics. You’ll find that you pretty much need to have both Windows and Linux if you want to take advantage of all the modern tools. If you’re new I reccomend just going with &lt;a href=&quot;https://ubuntu.com/download/desktop&quot;&gt;Ubuntu&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Raspberry Pi that you purchased will be running Raspbian. This is a stripped down version of the Debian Linux distrobution(Ubuntu is based upon Debian as well). There are two versions of Raspian, Raspian Desktop, and Raspian Lite.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Raspian Desktop - Full Desktop Environment capable of running a monitor and doing things like browse the web and playing video.&lt;/li&gt;
+  &lt;li&gt;Raspian Lite - Terminal only distrobution that doesn’t have bloat. This runs significantly faster and if you don’t need a monitor, this is what your system should use.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;installing-raspian&quot;&gt;Installing Raspian&lt;/h1&gt;
+&lt;p&gt;There is a very simple tool for installing the Raspian image onto the SD card. Do the following command in your Linux terminal to install the package&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;snap &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;rpi-imager &lt;span class=&quot;nt&quot;&gt;--devmode&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# When that is done installing do the following command to launch the gui&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;rpi-imager
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ensure that you’re SD card is connected to your machine and go through the setup for your image.&lt;/p&gt;
+
+&lt;p&gt;Chose OS -&amp;gt; Raspberry Pi OS(Other) -&amp;gt; Raspberry Pi OS (Lite)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/starting_with_raspberry_pi/rpi_imager.png&quot; alt=&quot;RPI Imager&quot; width=&quot;700&quot; /&gt;
+If you would like to install the full desktop suite opt for Raspberry Pi OS Full, but that is not the point of this tutorial. After your SD card is installed fully remove it and reinsert it into your computer. Two partitions should now appear in your system, Boot and RootFS. For our purposes we will only be touching the Boot partition.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;configuring-the-os&quot;&gt;Configuring the OS&lt;/h1&gt;
+&lt;p&gt;All Pi’s will need the following steps to set them up.&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;PATHTOBOOT/Boot
+
+&lt;span class=&quot;c&quot;&gt;#This file enables ssh on the system&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After that we need to do some configuration if your Pi has Wi-Fi. The only Pi I know that does not have Wi-Fi is the Pi Zero.
+You’ll need to create the following file within the Boot partition and name it wpa_supplicant.conf&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+    ssid=&quot;YOURSSID&quot;
+    psk=&quot;YOURPASSWORD&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Wherein the ssid is the name of your Wi-Fi network, and psk is your password. The Quotes remain around the string. For me personally I had to add the following line due to how my Wi-Fi network handles its keys.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;network={
+    ssid=&quot;YOURSSID&quot;
+    psk=&quot;YOURPASSWORD&quot;
+    key_mgmt=WPA-PSK
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/starting_with_raspberry_pi/boot_partition.png&quot; alt=&quot;Boot Paritition Setup&quot; width=&quot;700&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;todo-add-the-info-for-the-pi-zero-with-no-wi-fi&quot;&gt;TODO add the info for the Pi Zero with no Wi-Fi&lt;/h1&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;connecting-to-your-pi&quot;&gt;Connecting to Your Pi&lt;/h1&gt;
+&lt;p&gt;Now that your pi is fully configured we’re going to connect to it via SSH. SSH is a method of logging into a different computer remotely. It’s extremely useful, and you’ll use it when logging into other computers on your network, or even when logging into remote servers that you may be using.&lt;/p&gt;
+
+&lt;p&gt;This assumes you’re on the same Wi-Fi network as your Pi, or in the case of the Pi Zero (without Wi-Fi) that you’re connected to your computer via the USB Data Port.&lt;/p&gt;
+
+&lt;p&gt;The Pi will take a minute or two to boot up and be accessible so after plugging it in give it a bit.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# If this shows that it is successfully receiving packets move forward with the next command&lt;/span&gt;
+ping raspberrypi.local
+
+&lt;span class=&quot;c&quot;&gt;# This should allow you to login if you could ping successfully&lt;/span&gt;
+ssh pi@raspberrypi.local
+&lt;span class=&quot;c&quot;&gt;# The password by default is raspberry&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If this works successfully then you’ve successfully logged into your pi :)&lt;/p&gt;
+
+&lt;p&gt;If this does not work we’re going to have to look for the IP ourselves. We’re going to need a tool called nmap.&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nmap
+
+&lt;span class=&quot;c&quot;&gt;#This gets your IP address&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;hostname&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-I&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#Take the IP address that was outputted in the start by that and paste it in the place of the IP in&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#the following command&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;-sn&lt;/span&gt; 192.168.0.0/24
+&lt;span class=&quot;c&quot;&gt;#sudo is required to see the manufacturer of each device on your network&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nmap will have a long list of devices on your network, and you should see one that has the Raspberry Pi Foundation as its creator. Take that IP address and run the following command.&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#Replace the IP address here with the IP you found for your Pi&lt;/span&gt;
+ssh pi@192.168.0.13
+&lt;span class=&quot;c&quot;&gt;#The default password is raspberry&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/starting_with_raspberry_pi/ssh_success.png&quot; alt=&quot;SSH Success&quot; width=&quot;700&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;after-logging-in&quot;&gt;After Logging In&lt;/h1&gt;
+&lt;p&gt;Now that you’re in lets configure a few things. Run the following command on your shell that is now logged into the pi.&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# This will open up an ncurses GUI to configure the Pi&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;raspi-config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Inside the GUI we’re going to make a few changes&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;System Options -&amp;gt; Password -&amp;gt; Configure a new password for the pi user&lt;/li&gt;
+  &lt;li&gt;System Options -&amp;gt; Hostname -&amp;gt; Configure a new hostname for your pi (this was previously raspberrypi)&lt;/li&gt;
+  &lt;li&gt;Localisation Options -&amp;gt; Customize all of these, so they suit your locale and keyboard type&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/starting_with_raspberry_pi/raspi_conf.png&quot; alt=&quot;Raspi-Conf&quot; width=&quot;700&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now that you set up the new hostname and password your next ssh session will require you to do&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh pi@newhostname
+&lt;span class=&quot;c&quot;&gt;#Password is whatever you set it to&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;conclussion&quot;&gt;Conclussion&lt;/h1&gt;
+&lt;p&gt;With all of that wrapped up and the configuration complete we’re all done :)
+Congrats on setting up your Pi to work headless!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/tutorials/starting_with_raspberry_pi/pi_zero_w_picture.jpg&quot; alt=&quot;My Pi Zero W&quot; width=&quot;700&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There’s one final tip I’ll leave you with, you should shutdown your Pi using the terminal rather than just unplugging it. This helps to prevent data corruption.&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#This command will shut down the pi&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;shutdown now
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html"></summary></entry><entry><title type="html">Contribution Guide</title><link href="http://localhost:4000/tutorials/contribution_guide.html" rel="alternate" type="text/html" title="Contribution Guide" /><published>2021-04-22T22:41:46-04:00</published><updated>2021-04-22T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/contribution_guide</id><content type="html" xml:base="http://localhost:4000/tutorials/contribution_guide.html">&lt;hr /&gt;
 &lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
 

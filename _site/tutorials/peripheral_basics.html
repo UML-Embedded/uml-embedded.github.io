@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>
+    Peripheral Basics - 
+  </title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="text/javascript" src=""></script>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Peripheral Basics</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Peripheral Basics" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Overview of some basic peripherals in embedded systems. GPIO, ADCs, DACs, I2C, SPI, etc." />
+<meta property="og:description" content="Overview of some basic peripherals in embedded systems. GPIO, ADCs, DACs, I2C, SPI, etc." />
+<link rel="canonical" href="http://localhost:4000/tutorials/peripheral_basics.html" />
+<meta property="og:url" content="http://localhost:4000/tutorials/peripheral_basics.html" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-27T22:41:46-04:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/tutorials/peripheral_basics.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tutorials/peripheral_basics.html"},"dateModified":"2021-07-27T22:41:46-04:00","headline":"Peripheral Basics","description":"Overview of some basic peripherals in embedded systems. GPIO, ADCs, DACs, I2C, SPI, etc.","datePublished":"2021-07-27T22:41:46-04:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+
+  <body class="small">
+
+    <header>
+  <div class="menu">
+    <ul>
+      <li class="page_title">Peripheral Basics</li>
+<li><a href="/">/Home</a></li>
+<li><a href="/tutorial">/Tutorials</a></li>
+<li><a href="/projects">/Projects</a></li>
+<li><a href="/blog">/Blog</a></li>
+<li><a href="/about">/About</a></li>
+</ul>
+  </div>
+</header>
+
+
+    <center>
+<h1>Peripheral Basics</h1>
+</center>
+
+<hr>
+
+<h1 id="what-are-peripherals">What Are Peripherals</h1>
+<p>At a low level, peripherals are anything that interact with a computer to either give it information or send out information. This information can be pretty much anything.</p>
+
+<p>A mouse is a peripheral that inputs the X and Y movement you make, and your computer uses that peripheral to determine where you want your cursor to appear on the screen. Another example would be a temperature sensor that communicates over I2C (pronounced I squared C).</p>
+
+<p>Peripherals can be communicated with via numerous protocols, but we’re only going to cover a few basic types of peripherals and protocols here.</p>
+
+<hr>
+<h1 id="gpio-inputs">GPIO Inputs</h1>
+<p>This is the most basic type of peripheral you can attach to a processor. The pins either read the voltage on the line, or they write a voltage to the line. The voltage is digital, meaning it can only be on or off at the specific device’s voltage.</p>
+
+<p>Inputs can have numerous configurations such as high impedance, pull-up, pull-down, or floating. These dictate the standard state of the pin. Pull up means the pin is typically high, while pull down means the pin is typically low. High impedance effectively places an infinite resistor in series, while floating means the pin can do anything.
+<img src="/assets/images/posts/tutorials/peripheral_basics/pull_up_pull_down.png" alt="Pull Up Pull Down Example" width="700"></p>
+
+<hr>
+<h1 id="gpio-outputs">GPIO Outputs</h1>
+<p>Outputs have numerous configurations as well, such as push-pull, open-drain, and open-collector.</p>
+
+<p>push-pull pins are capable of both sourcing and sinking current to create the desired output due to their structure shown below. Open-Drain pins are only capable of sinking current and rely on external pullups to set the voltage on the pin. This is shown below as well.
+<img src="/assets/images/posts/tutorials/peripheral_basics/open_drain_push_pull.png" alt="Open Drain and Push Pull GPIO Configurations" width="700"></p>
+
+<p>Open Collector is effectively the same thing as open drain except it uses a BJT rather than a FET, as shown below.
+<img src="/assets/images/posts/tutorials/peripheral_basics/open_collector.png" alt="Open Collector GPIO Configuration" width="700"></p>
+
+<hr>
+<h1 id="adcs">ADCs</h1>
+<p>Analog to Digital Converters(ADCs) change a message in the Analog domain into a message that can be processed in the Digital domain. They offer N bits of precision over a voltage range V. If you divide that voltage V by the N bits you receive the resolution of your ADC. Converting Analog signals to the Digital domain is a vital part of modern day signal processing.</p>
+
+<p>Here is an example of what an ADC looks like under the hood at a basic level</p>
+
+<p><img src="/assets/images/posts/tutorials/peripheral_basics/adc.png" alt="Discreet Analog to Digital Converter" width="700">
+You can see that there are 8 comparators. This means we can measure 8 bits separately. 8 is 2^3 which means by using an encoder we can measure an Analog signal with 8 bits of accuracy, and only need to read three lines.</p>
+
+<p>If Vref in this scenario was +5V, we would have 5 V / 8 Bits therefore each bit would have a resolution of ~625mV.</p>
+
+<hr>
+<h1 id="dacs">DACs</h1>
+<p>Digital to Analog Converters(DACs) are the matching pair to your ADCs. Much like we need to convert Analog Signals to Digital Signals, we must do the opposite as well. The music coming from your phone is stored digitally, but eventually the sound played via a speaker must be an Analog waveform.</p>
+
+<p>DACs have the same principle of a reference voltage V, N bits, and a resolution. An Example DAC is shown below.
+<img src="/assets/images/posts/tutorials/peripheral_basics/dac.png" alt="Discreet Digital to Analog Converter" width="700">
+In this example you can see that each bit has a resistor that is double the value of the previous bit in series with the digital line. This means that by setting each individual bit high you can push a proportionate amount of current through the pin, and with the op amp acting inverting amplifier you can effectively translate the digital signals into a known analog signal with a known resolution.</p>
+
+<p>The resolution in this case if the voltage was +5V would be +5V / 4 Bits = 1.25 V. Note the output would be inverted though.</p>
+
+<hr>
+<p>There are resistor to resistor DACs as well that are often utilized. Example below.
+<img src="/assets/images/posts/tutorials/peripheral_basics/dac_r2r.png" alt="Discreet Digital to Analog Converter R2R" width="700">
+This is useful when you can fit more resistors, and you don’t need the op amp to drive the load.</p>
+
+<hr>
+<h1 id="i2c">I2C</h1>
+
+<hr>
+<h1 id="spi">SPI</h1>
+
+<hr>
+
+<h1 id="wrapping-up">Wrapping Up</h1>
+
+
+
+    <footer>
+
+  /peripheral_basics
+  <br><br>
+   <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20"> <a href="https://github.com/PatrickCPE">@PatrickCPE</a> 
+   <img class="emoji" title=":movie_camera:" alt=":movie_camera:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a5.png" height="20" width="20"> <a href="https://www.youtube.com/channel/UC6PF4hNLxFtxfc0eDMCGuiQ">@PatrickCPE</a> 
+
+</footer>
+
+
+  </body>
+</html>
