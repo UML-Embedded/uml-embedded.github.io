@@ -65,6 +65,37 @@ This is useful when you can fit more resistors, and you don't need the op amp to
 
 ---
 # I2C
+I2C (I-Squared-C) is a data transfer/protocol rather than a peripheral itself. Think as a method of delivering a message to a peripheral and telling it what you need to do. I2C is a two wire synchronous protocol.
+<img src="/assets/images/posts/tutorials/peripheral_basics/i2c_overview.png" alt="I2C Overview" width="700">
+I2C allows a master device (like your microcontroller or CPU) to communicate with numerous slave devices(like sensors, drivers, other microcontrollers, etc.)
+
+The first wire is Serial Clock (SCL). This wire sets the clock speed for the I2C bus, and it's frequency will depend upon the specific peripheral you're using. Common frequencies are 100 kHz and 400 kHz.
+
+The second wire is Serial Data (SDA). This wire is used to send all the data between two devices. We'll go ever an example waveform and how you'd use this protocol below
+
+Each wire requires a pullup resistor because internally the pins are open-collector/open-drain configuration. The value of resistor you chose depends upon the length of the line, and the frequency at which you communicate, but typically 4.7k works fine.
+
+Next up we'll discuss the message window and how the data is formatted.
+<img src="/assets/images/posts/tutorials/peripheral_basics/i2c_waveform.png" alt="I2C Waveform" width="700">
+***Start Bit***
+First, SDA is pulled low while SCL remains high. This indicates that the bus is going to be used.
+
+***Address***
+This indicates the address to which the master will be writing. This is an 7 Bit message that is sent Most Significant Bit(MSB) First. The address of the slave device is given in the device's data sheet.
+
+***Read/Write Bit***
+The 8th bit of the message determines whether the master will be reading or writing from the slave device specified at the address. 0 is a write operation, 1 is a read operation.
+
+***Acknowledge***
+To show that the slave device successfully received the message, an acknowledgement(ACK) bit is sent on SCL. This is the 9th Bit.
+
+If ACK is low that means the slave successfully received the message, and if it is high then the transfer failed, the communication ends, and the master is free to react to that failure.
+
+***Data Frame***
+Assuming the ACK bit was low, then the master will continue creating a constant clock signal on SCK until it has received or written everything it needs. Master or Slave will continue reading/writing until the master determines that the transfer is done.
+
+***Stop Condition***
+The transfer stops when the Master pulls SDA high while SCL is already high. You don't modify SDA while SCL is high unless you intend to stop the transfer.
 
 ---
 # SPI
