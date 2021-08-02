@@ -99,7 +99,21 @@ The transfer stops when the Master pulls SDA high while SCL is already high. You
 
 ---
 # SPI
+The final communication protocol that we'll discuss is SPI. At a basic level SPI is just a clock, two data lines, and on and off switches for your slaves.
+
+Here is an example configuration with three slave devices.
+<img src="/assets/images/posts/tutorials/peripheral_basics/spi.png" alt="SPI Configuration" width="700">
+SCK is the clock for the interface. MOSI is Master Out Slave In. MISO is Master In Slave Out, and lastly SS# means slave select. Slave Select enables the particular peripheral device your master is communicating, and then the data transfer begins.
+
+There is no exact configuration for the data in SPI, and there are actually four different sampling times for the data depending upon the specific peripheral. The sampling configuration determines at what point in the waveform the data will be sampled for the device's usage.
+
+These mode definitions are determines by the value of CPOL and CPHA flags. The [Wiki](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface) for SPI has information on this.
+
+Overall SPI is a simpler protocol (minus the four different configurations) that allows for very fast communication (~x10 faster than I2C).
 
 ---
 
 # Wrapping Up
+There are a million more types of protocols out there, and guess what, there is no point in learning them all right now. If you're designing automotive controls your going to need to learn how to use a CANBus. If you're making a keyboard you're going to need to learn the USB protocol. In automation you're going to need to learn RS-Insert Three Numbers Here protocol.
+
+This just shows you a few of the common ones. Find parts that serve your purpose, and if they require a specific protocol learn it :)

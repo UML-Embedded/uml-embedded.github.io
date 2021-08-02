@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-07-30T06:53:54-04:00</updated><id>http://localhost:4000/feed.xml</id><subtitle>&quot;Electronics, Microcontrollers, FPGAs, Embedded, Linux, Software, horrible projects that deserve to be thrown into oblivion. Just your everyday idiot who enjoys taking things apart, and maybe someday I'll learn how to put them back together&quot;</subtitle><entry><title type="html">Peripheral Basics</title><link href="http://localhost:4000/tutorials/peripheral_basics.html" rel="alternate" type="text/html" title="Peripheral Basics" /><published>2021-07-27T22:41:46-04:00</published><updated>2021-07-27T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/peripheral_basics</id><content type="html" xml:base="http://localhost:4000/tutorials/peripheral_basics.html">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-08-01T22:09:49-04:00</updated><id>http://localhost:4000/feed.xml</id><subtitle>&quot;Electronics, Microcontrollers, FPGAs, Embedded, Linux, Software, horrible projects that deserve to be thrown into oblivion. Just your everyday idiot who enjoys taking things apart, and maybe someday I'll learn how to put them back together&quot;</subtitle><entry><title type="html">Peripheral Basics</title><link href="http://localhost:4000/tutorials/peripheral_basics.html" rel="alternate" type="text/html" title="Peripheral Basics" /><published>2021-07-27T22:41:46-04:00</published><updated>2021-07-27T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/peripheral_basics</id><content type="html" xml:base="http://localhost:4000/tutorials/peripheral_basics.html">&lt;hr /&gt;
 
 &lt;h1 id=&quot;what-are-peripherals&quot;&gt;What Are Peripherals&lt;/h1&gt;
 &lt;p&gt;At a low level, peripherals are anything that interact with a computer to either give it information or send out information. This information can be pretty much anything.&lt;/p&gt;
@@ -86,10 +86,24 @@ The transfer stops when the Master pulls SDA high while SCL is already high. You
 
 &lt;hr /&gt;
 &lt;h1 id=&quot;spi&quot;&gt;SPI&lt;/h1&gt;
+&lt;p&gt;The final communication protocol that we’ll discuss is SPI. At a basic level SPI is just a clock, two data lines, and on and off switches for your slaves.&lt;/p&gt;
+
+&lt;p&gt;Here is an example configuration with three slave devices.
+&lt;img src=&quot;/assets/images/posts/tutorials/peripheral_basics/spi.png&quot; alt=&quot;SPI Configuration&quot; width=&quot;700&quot; /&gt;
+SCK is the clock for the interface. MOSI is Master Out Slave In. MISO is Master In Slave Out, and lastly SS# means slave select. Slave Select enables the particular peripheral device your master is communicating, and then the data transfer begins.&lt;/p&gt;
+
+&lt;p&gt;There is no exact configuration for the data in SPI, and there are actually four different sampling times for the data depending upon the specific peripheral. The sampling configuration determines at what point in the waveform the data will be sampled for the device’s usage.&lt;/p&gt;
+
+&lt;p&gt;These mode definitions are determines by the value of CPOL and CPHA flags. The &lt;a href=&quot;https://en.wikipedia.org/wiki/Serial_Peripheral_Interface&quot;&gt;Wiki&lt;/a&gt; for SPI has information on this.&lt;/p&gt;
+
+&lt;p&gt;Overall SPI is a simpler protocol (minus the four different configurations) that allows for very fast communication (~x10 faster than I2C).&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h1 id=&quot;wrapping-up&quot;&gt;Wrapping Up&lt;/h1&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html"></summary></entry><entry><title type="html">Linux Basics</title><link href="http://localhost:4000/tutorials/linux_basics.html" rel="alternate" type="text/html" title="Linux Basics" /><published>2021-07-26T22:41:46-04:00</published><updated>2021-07-26T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/linux_basics</id><content type="html" xml:base="http://localhost:4000/tutorials/linux_basics.html">&lt;hr /&gt;
+&lt;h1 id=&quot;wrapping-up&quot;&gt;Wrapping Up&lt;/h1&gt;
+&lt;p&gt;There are a million more types of protocols out there, and guess what, there is no point in learning them all right now. If you’re designing automotive controls your going to need to learn how to use a CANBus. If you’re making a keyboard you’re going to need to learn the USB protocol. In automation you’re going to need to learn RS-Insert Three Numbers Here protocol.&lt;/p&gt;
+
+&lt;p&gt;This just shows you a few of the common ones. Find parts that serve your purpose, and if they require a specific protocol learn it :)&lt;/p&gt;</content><author><name></name></author><category term="tutorials" /><summary type="html"></summary></entry><entry><title type="html">Linux Basics</title><link href="http://localhost:4000/tutorials/linux_basics.html" rel="alternate" type="text/html" title="Linux Basics" /><published>2021-07-26T22:41:46-04:00</published><updated>2021-07-26T22:41:46-04:00</updated><id>http://localhost:4000/tutorials/linux_basics</id><content type="html" xml:base="http://localhost:4000/tutorials/linux_basics.html">&lt;hr /&gt;
 
 &lt;h1 id=&quot;requirements&quot;&gt;Requirements&lt;/h1&gt;
 &lt;ul&gt;
