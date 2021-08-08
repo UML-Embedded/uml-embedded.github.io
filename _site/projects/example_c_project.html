@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>
+     Example C Project - 
+  </title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="text/javascript" src=""></script>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Example C Project</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Example C Project" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Example C Project showing how to use CMake, CTest (with Unity Framework), and Doxygen to build documents" />
+<meta property="og:description" content="Example C Project showing how to use CMake, CTest (with Unity Framework), and Doxygen to build documents" />
+<link rel="canonical" href="http://localhost:4000/projects/example_c_project.html" />
+<meta property="og:url" content="http://localhost:4000/projects/example_c_project.html" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-07T22:41:46-04:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/projects/example_c_project.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/projects/example_c_project.html"},"dateModified":"2021-08-07T22:41:46-04:00","headline":"Example C Project","description":"Example C Project showing how to use CMake, CTest (with Unity Framework), and Doxygen to build documents","datePublished":"2021-08-07T22:41:46-04:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+
+  <body class="small">
+
+    <header>
+  <div class="menu">
+    <ul>
+      <li class="page_title"> Example C Project</li>
+<li><a href="/">/Home</a></li>
+<li><a href="/tutorial">/Tutorials</a></li>
+<li><a href="/projects">/Projects</a></li>
+<li><a href="/blog">/Blog</a></li>
+<li><a href="/about">/About</a></li>
+</ul>
+  </div>
+</header>
+
+
+    <center>
+<h1>Example C Project</h1>
+</center>
+
+<hr>
+<h1 id="overview">Overview</h1>
+<p>I created an <a href="https://github.com/PatrickCPE/c_example">example project</a> so you guys can have a basic idea of how to structure your code. There are a few pieces of advice for your projects that will make your life much better in the long run.</p>
+
+<hr>
+<ul>
+  <li>Use Version Control (Always!!!)</li>
+  <li>Use a Build System (Always!)</li>
+  <li>Test Your Code (For any sizeable project that you intend to create, test from the start!)</li>
+  <li>Document Your Code (Always document the basics! If you intend to get help on it use an autodoc tool and document it properly!)</li>
+</ul>
+
+<hr>
+<p>For Version control the industry standard is Git. Learn it at a basic level, the rest will come with time.</p>
+
+<p>For our build system we will be using CMake. It supports pretty much everything out there, but its main focus is C and C++.</p>
+
+<p>For testing, we will be using CTest. This is a simple testing interface that is incorporated with CMake. It merely runs the tests.</p>
+
+<p>For the test themselves you can either write a bare-bones wrapper by hand, or use a library like Unity (What I use) to test your code.</p>
+
+<p>For Documentation there is your good ole README file, and that’s always a requirement. F auto-documentation we’ll use Doxygen.</p>
+
+<p>Doxygen can also output to Sphinx which is the tool I used to make my python doc sites, but for now we’ll make a bare-bones site with Doxygen itself.</p>
+
+<hr>
+<h1 id="version-control---git">Version Control - Git</h1>
+
+<p>Git pretty much keeps track of changes in your project, and it allows you to revert changes if you screw up. It also allows other people to work on the project with you, and to merge your code without causing as many problems.</p>
+
+<p>Here’s the basic rundown of how to use <a href="https://www.atlassian.com/git">Git</a></p>
+
+<p>My basic workflow goes like this. Create a git directory with</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>directory
+git init
+</code></pre></div></div>
+<p>Then I create a .gitignore file and add any files I don’t want tracked to it.</p>
+
+<p>From there on out my workflow is very simple.</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Add everything in this directory recursively to be added with this commit</span>
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Message detailing what I did, what I changed, or what I absolutely just broke :)"</span>
+<span class="c"># And if I need to push remotely I do</span>
+git push <span class="nt">-u</span> origin main
+</code></pre></div></div>
+<p>That’s it. If I screw up I can always fix it later. I don’t bother showing you how to merge or anything because for now I just want you to have a backups of your changes, and keep everything tracked properly.</p>
+
+<hr>
+<h1 id="build-system---cmake">Build System - CMake</h1>
+<p><a href="https://cmake.org/">CMake</a> is a cross-platform build tool for blah blah blah.</p>
+
+<p>It allows you to compile your libraries and your code easily. It also has testing incorporated, and it’s a necessity for C or C++ projects. There are other tools, but CMake is the industry standard.</p>
+
+<p>At the top level of your project you will have a CMakeList.txt file</p>
+
+<p>This is pretty much the master control file for the project. In your sub folders you’ll have files under the same name with more CMake commands. You pretty much do this recursively till the build tool has your entire project mapped out.</p>
+
+<p>Here’s the top level CMakeList.txt for this project commented up for you.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Set min version
+cmake_minimum_required(VERSION 3.20)
+
+#Set project name, version, and support languages
+project(c_example VERSION 0.1 LANGUAGES C)
+#For example to support C and C++
+#project(c_example C C++)
+
+#Use C 11 and disable compiler extensions
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS OFF)
+
+#Or set the standard for a particular library
+#set_target_properties(lib_a PROPERTIES
+#        C_STANDARD          11
+#        C_STANDARD_REQUIRED ON
+#        C_EXTENSIONS        OFF
+#)
+
+#Set compiler flags for all versions
+set(CMAKE_C_FLAGS "-Wall -Wextra")
+
+#include(Ctest)
+enable_testing()
+add_subdirectory(src/libs)
+add_subdirectory(src)
+add_subdirectory(tests)
+
+#Example setup for GNU Make for the release directory
+#cmake -G "Unix Makefiles" -S . -B ../build/release/
+#cd ../build/release
+#make
+
+#Example setup for Ninja for the debug directory
+#cmake -G Ninja -S . -B ../build/debug/
+#cd ../build/debug
+#ninja
+
+#Or just use CMake to avoid the low level build tools for either
+#cmake --build ../build/debug/ --config Release --target tes
+</code></pre></div></div>
+
+<p>This file doesn’t do much for you in my case, all my building is handled inside the subdirectories that I add.</p>
+
+<p>It’s important to set an up-to-date CMake required version, and to set the proper C standard.Compiler flags can be changed as needed.</p>
+
+<hr>
+<p>Let’s take a look at the src directories CMakeList.txt file</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#Set compiler flags
+set(CMAKE_C_FLAGS "-Wall -Wextra")
+
+add_executable(main main.c)
+target_link_libraries(main PRIVATE lib_b)
+
+add_subdirectory(libs/Unity
+</code></pre></div></div>
+
+<p>This sets flags for this scope, creates an executable main that depends on main.c, and creates a link telling the compiler main depends on lib_b.</p>
+
+<p>I add the Unity Subdirectory, and it builds and installs the Unity test framework.</p>
+
+<p>lib_b is added in the subdirectory below that I added in the top level file. Here is that file.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>add_library(lib_a example_lib_a.c)
+add_library(lib_b example_lib_b.c)
+
+target_link_libraries(lib_b PRIVATE lib_a
+</code></pre></div></div>
+
+<p>You can see here that I create 2 libraries called lib_a, and lib_b from their respective source files. I tell the build tool that lib_b depends on lib_a, and the build tool handles the rest for me.</p>
+
+<hr>
+<p>When this is all said and done you can run the configuration commands shown in the top level CMake to set up the build system, and then to build your code.</p>
+
+<hr>
+<h1 id="testing---ctest">Testing - CTest</h1>
+<p>The only CMakeList.txt file I failed to mention is in tests. We’ll go over that here.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+#Create executables for tests
+enable_testing()
+#Basic testing without a framework
+add_executable(test_pass test_pass.c)
+add_test(test_pass test_pass)
+
+add_executable(test_fail test_fail.c)
+add_test(test_fail test_fail)
+
+#Testing using the Unity Framework
+add_executable(test_example_lib_b test_example_lib_b.c)
+target_link_libraries(test_example_lib_b PRIVATE unity)
+target_link_libraries(test_example_lib_b PRIVATE lib_b)
+
+add_test(test_example_lib_b test_example_lib_b
+</code></pre></div></div>
+
+<p>When it comes to testing you need to enable at the top level, and at the sub-level that you’ll be running the test.</p>
+
+<p>At a basic level all you need to do is add executables for your test, and list the executable as a test.</p>
+
+<p>If you do this as shown, CTest will run them all for you.</p>
+
+<p>CTest is very simple, if the program returns 0, it passes. If it doesn’t, it fails. The first two examples show how simple tests really are, and the third example shows testing using a framework.</p>
+
+<hr>
+<p>Unity is the framework that we’ll be using in this case.</p>
+
+<p>Unity pretty much just allows you to assert some condition, and it will return zero if true, or false if not. It also has a lot of niceties like error messaging and comparing in certain bases like hex comparison, etc.</p>
+
+<p>You can learn how to use their framework <a href="http://www.throwtheswitch.org/unity">here</a>.</p>
+
+<hr>
+<p>In the end, as long as your code is built all you need to do is move into the build directory and run</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ctest
+</code></pre></div></div>
+
+<p>You’ll get output like this</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>patrick@patrick-desktop:~/ws/club/projects/c_example/build/debug$ ctest
+Test project /home/patrick/ws/club/projects/c_example/build/debug
+    Start 1: test_pass
+1/3 Test #1: test_pass ........................   Passed    0.00 sec
+    Start 2: test_fail
+2/3 Test #2: test_fail ........................***Failed    0.00 sec
+    Start 3: test_example_lib_b
+3/3 Test #3: test_example_lib_b ...............***Failed    0.00 sec
+
+33% tests passed, 2 tests failed out of 3
+
+Total Test time (real) =   0.00 sec
+
+The following tests FAILED:
+          2 - test_fail (Failed)
+          3 - test_example_lib_b (Failed)
+Errors while running CTest
+Output from these tests are in: /home/patrick/ws/club/projects/c_example/build/debug/Testing/Temp...
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.
+</code></pre></div></div>
+<p>Don’t worry, those fails are meant to occur. Those are just to show you how fails work.</p>
+
+<hr>
+<h1 id="documentation---doxygen">Documentation - Doxygen</h1>
+<p>There are two levels of documentation. A simple README showing what your code does, and how to use it is always required. This is the first thing people see when it comes to your project.</p>
+
+<p>When it comes to working on a large project though it’s often useful to have an autodocumentation tool. For this, we’ll use Doxygen. Doxygen is an autoparser that will read through your code, document the functions, classes, structs, pretty much anything in there and build a website to show you all the information.</p>
+
+<p>To install it run</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>doxygen
+<span class="nb">sudo </span>apt <span class="nb">install </span>doxygen-gui
+</code></pre></div></div>
+<p>Simply go into your docs directory and run doxygui, it’s pretty self explanatory when your in the application. Make sure to save the config to a Doxyfile, and when your ready to build do</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>docs
+doxygui
+doxygen Doxyfile
+</code></pre></div></div>
+<p>Inside the documents folder you will now have a build folder that contains a html site documentation your project. Open the index.html to see the homepage.</p>
+
+<p>You can either select to document all code automatically, or only things commented in Doxygen style when you’re in the GUI.</p>
+
+<p>To learn how to use Doxygen style comments check <a href="https://www.doxygen.nl/manual/docblocks.html">this out</a>.</p>
+
+<hr>
+
+<h1 id="wrapping-up">Wrapping Up</h1>
+<p>This write-up by no means goes into depth on any of these things. This is a high-level overview and you’re meant to download the repo and look at it yourself to get a better understanding.</p>
+
+<p>What I do want you to understand is that you need a build system, you need some level of documentation, and if you’re making a substantial project, you need testing.</p>
+
+<p>The more you invest at startup, the less painful it will be to have to implement this stuff down the road. Best of luck with your projects :)</p>
+
+
+
+    <footer>
+
+  /example_c_project
+  <br><br>
+   <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20"> <a href="https://github.com/PatrickCPE">@PatrickCPE</a> 
+   <img class="emoji" title=":movie_camera:" alt=":movie_camera:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a5.png" height="20" width="20"> <a href="https://www.youtube.com/channel/UC6PF4hNLxFtxfc0eDMCGuiQ">@PatrickCPE</a> 
+
+</footer>
+
+
+  </body>
+</html>
